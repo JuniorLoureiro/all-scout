@@ -1,6 +1,10 @@
 package com.example.senac.View;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 public class LoginView extends javax.swing.JPanel {
 
@@ -52,6 +56,12 @@ public class LoginView extends javax.swing.JPanel {
         botaoLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         botaoLogin.setForeground(new java.awt.Color(0, 0, 0));
         botaoLogin.setText("LOGIN");
+        botaoLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showMainView();
+            }
+        });
 
        
 
@@ -101,9 +111,7 @@ public class LoginView extends javax.swing.JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Oculta o painel de login, o rótulo "NÃO TENHO CONTA" e o botão "CADASTRAR"
-                jPanel1.setVisible(false);
-                labelNaoTenhoConta.setVisible(false);
-                botaoCadastrar.setVisible(false);
+                showCadastroUserView();
             }
         });
 
@@ -137,7 +145,36 @@ public class LoginView extends javax.swing.JPanel {
                     .addComponent(labelNaoTenhoConta))
                 .addGap(48, 48, 48))
         );
-    }// </editor-fold>                        
+    }// </editor-fold> 
+    
+    private void showMainView() {
+        // Obtenha a referência ao JFrame principal
+        JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+
+        // Crie uma instância da MainView
+        MainView mainView = new MainView();
+
+        // Substitua o painel atual pelo painel da MainView
+        mainFrame.setContentPane(mainView);
+        mainFrame.revalidate();
+    }
+
+    private void showCadastroUserView() {
+        // Obtém o frame pai do JPanel atual
+        JFrame cadastroFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+    
+        // Cria uma nova instância de CadastroUserView
+        CadastroUserView cadastroView = new CadastroUserView();
+    
+        // Define o conteúdo do frame como o CadastroUserView
+        cadastroFrame.setContentPane(cadastroView);
+    
+        // Revalida e redesenha o frame
+        cadastroFrame.revalidate();
+        cadastroFrame.repaint();
+    }
+
+    
 
    
 
