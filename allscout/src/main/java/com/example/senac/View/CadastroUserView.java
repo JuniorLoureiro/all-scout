@@ -1,7 +1,13 @@
 package com.example.senac.View;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+
+import com.example.senac.Controller.ContatoController;
 
 public class CadastroUserView extends javax.swing.JPanel {
 
@@ -36,6 +42,7 @@ public class CadastroUserView extends javax.swing.JPanel {
         textFieldUsername.setBackground(new java.awt.Color(0, 0, 0));
         textFieldUsername.setForeground(new java.awt.Color(0, 110, 255));
         textFieldUsername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
+        textFieldUsername.setFont(new java.awt.Font("Segoe UI Black", 0, 18));
 
         labelTituloCadastro.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         labelTituloCadastro.setForeground(new java.awt.Color(0, 110, 255));
@@ -44,6 +51,7 @@ public class CadastroUserView extends javax.swing.JPanel {
         textFieldNomeCompleto.setBackground(new java.awt.Color(0, 0, 0));
         textFieldNomeCompleto.setForeground(new java.awt.Color(0, 110, 255));
         textFieldNomeCompleto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
+        textFieldNomeCompleto.setFont(new java.awt.Font("Segoe UI Black", 0, 18));
 
         botaoCadastrar.setBackground(new java.awt.Color(0, 110, 255));
         botaoCadastrar.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
@@ -53,6 +61,7 @@ public class CadastroUserView extends javax.swing.JPanel {
         textFieldSenha.setBackground(new java.awt.Color(0, 0, 0));
         textFieldSenha.setForeground(new java.awt.Color(0, 110, 255));
         textFieldSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
+        textFieldSenha.setFont(new java.awt.Font("Segoe UI Black", 0, 18));
 
         labelSenha.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelSenha.setForeground(new java.awt.Color(0, 110, 255));
@@ -85,20 +94,20 @@ public class CadastroUserView extends javax.swing.JPanel {
         comboBoxEndereco.setBackground(new java.awt.Color(0, 0, 0));
         comboBoxEndereco.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         comboBoxEndereco.setForeground(new java.awt.Color(0, 110, 255));
-        comboBoxEndereco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        //comboBoxEndereco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboBoxEndereco.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
 
         comboBoxContato.setBackground(new java.awt.Color(0, 0, 0));
         comboBoxContato.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         comboBoxContato.setForeground(new java.awt.Color(0, 110, 255));
-        comboBoxContato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        //comboBoxContato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboBoxContato.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
 
         labelNomeCompleto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelNomeCompleto.setForeground(new java.awt.Color(0, 110, 255));
         labelNomeCompleto.setText("NOME COMPLETO ");
 
-        logoAllScout.setText("jLabel1");
+        logoAllScout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/example/senac/View/LogoCadastrar.png"))); 
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -135,7 +144,7 @@ public class CadastroUserView extends javax.swing.JPanel {
                 .addContainerGap(57, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelTituloCadastro)
-                    .addComponent(logoAllScout, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(logoAllScout, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addComponent(labelNomeCompleto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -184,9 +193,36 @@ public class CadastroUserView extends javax.swing.JPanel {
     }
 
     private void botaoCadastraContatoActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        openAddContatoWindow();
+        
+        
     }
 
+    public void addEnderecoToComboBox() {
+        //comboBox do endereco
+    }
+
+    public void addContatoToComboBox(String nomeContato,String telefone, String email) {
+        String formattedContatoInfo = String.format("(%s) : %s / %s",nomeContato, telefone, email);
+        comboBoxContato.addItem(formattedContatoInfo);
+        Color foregroundColor = new Color(0,0,0);
+        comboBoxContato.setForeground(foregroundColor);
+        Color backgroundColor = new Color(0, 110, 255);
+        comboBoxContato.setBackground(backgroundColor);
+    }
+
+    private void openAddContatoWindow(){
+        JFrame addContatoFrame = new JFrame("ADICIONAR NOVO CONTATO");
+        addContatoFrame.setSize(400, 400);
+        addContatoFrame.setLayout(new BorderLayout());
+        ContatoController contatoController = new ContatoController();
+        ContatoView contatoView = new ContatoView(contatoController, this);
+        addContatoFrame.add(contatoView, BorderLayout.CENTER);
+        addContatoFrame.setLocationRelativeTo(null);
+        addContatoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        addContatoFrame.setVisible(true);
+
+    }
 
     // Variables declaration - do not modify
     private javax.swing.JButton botaoCadastraContato;
@@ -205,3 +241,4 @@ public class CadastroUserView extends javax.swing.JPanel {
     private javax.swing.JTextField textFieldUsername;
     // End of variables declaration
 }
+

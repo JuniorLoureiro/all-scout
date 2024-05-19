@@ -13,8 +13,8 @@ public class ContatoController {
     }
 
     // Método para adicionar um novo contato
-    public void criarContato(String telefone, String email) {
-        Contato novoContato = new Contato(telefone, email);
+    public void criarContato(String nomeContato, String telefone, String email) {
+        Contato novoContato = new Contato(nomeContato, telefone, email);
         contatos.add(novoContato);
     }
 

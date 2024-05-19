@@ -43,6 +43,7 @@ public class LoginView extends javax.swing.JPanel {
         textFieldSenha.setBackground(new java.awt.Color(0, 0, 0));
         textFieldSenha.setForeground(new java.awt.Color(0, 110, 255));
         textFieldSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
+        textFieldSenha.setFont(new java.awt.Font("Segoe UI Black", 0, 18));
 
         labelUsername.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelUsername.setForeground(new java.awt.Color(0, 110, 255));
@@ -51,6 +52,7 @@ public class LoginView extends javax.swing.JPanel {
         textFieldUsername.setBackground(new java.awt.Color(0, 0, 0));
         textFieldUsername.setForeground(new java.awt.Color(0, 110, 255));
         textFieldUsername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
+        textFieldUsername.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // Definindo fonte e tamanho
 
         botaoLogin.setBackground(new java.awt.Color(0, 110, 255));
         botaoLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
