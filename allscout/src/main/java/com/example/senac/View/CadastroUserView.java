@@ -241,4 +241,3 @@ public class CadastroUserView extends javax.swing.JPanel {
     private javax.swing.JTextField textFieldUsername;
     // End of variables declaration
 }
-
