@@ -22,7 +22,7 @@ public class LoginView extends javax.swing.JPanel {
         labelSenha = new javax.swing.JLabel();
         logoAllScout = new javax.swing.JLabel();
 
-        textFieldSenha = new javax.swing.JTextField();
+        textFieldSenha = new javax.swing.JPasswordField();
         labelUsername = new javax.swing.JLabel();
         textFieldUsername = new javax.swing.JTextField();
         botaoLogin = new javax.swing.JButton();
@@ -188,7 +188,7 @@ public class LoginView extends javax.swing.JPanel {
     private javax.swing.JLabel labelSenha;
     private javax.swing.JLabel labelUsername;
     private javax.swing.JLabel logoAllScout;
-    private javax.swing.JTextField textFieldSenha;
+    private javax.swing.JPasswordField textFieldSenha;
     private javax.swing.JTextField textFieldUsername;
     // End of variables declaration                   
 }

@@ -24,7 +24,7 @@ public class CadastroUserView extends javax.swing.JPanel {
         labelTituloCadastro = new javax.swing.JLabel();
         textFieldNomeCompleto = new javax.swing.JTextField();
         botaoCadastrar = new javax.swing.JButton();
-        textFieldSenha = new javax.swing.JTextField();
+        textFieldSenha = new javax.swing.JPasswordField();
         labelSenha = new javax.swing.JLabel();
         botaoCadastraEndereco = new javax.swing.JButton();
         botaoCadastraContato = new javax.swing.JButton();
@@ -237,7 +237,7 @@ public class CadastroUserView extends javax.swing.JPanel {
     private javax.swing.JLabel labelUsername;
     private javax.swing.JLabel logoAllScout;
     private javax.swing.JTextField textFieldNomeCompleto;
-    private javax.swing.JTextField textFieldSenha;
+    private javax.swing.JPasswordField textFieldSenha;
     private javax.swing.JTextField textFieldUsername;
     // End of variables declaration
 }
