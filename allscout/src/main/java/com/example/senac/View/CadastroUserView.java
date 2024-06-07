@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 import com.example.senac.Controller.ContatoController;
+import com.example.senac.Controller.EnderecoController;
 
 public class CadastroUserView extends javax.swing.JPanel {
 
@@ -189,7 +190,7 @@ public class CadastroUserView extends javax.swing.JPanel {
     }// </editor-fold>
 
     private void botaoCadastraEnderecoActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        openAddEnderecoWindow();
     }
 
     private void botaoCadastraContatoActionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,8 +199,13 @@ public class CadastroUserView extends javax.swing.JPanel {
         
     }
 
-    public void addEnderecoToComboBox() {
-        //comboBox do endereco
+    public void addEnderecoToComboBox(String rua, String numero, String complemento, String cidade, String estado, String pais, String cep) {
+        String formattedContatoInfo = String.format("%s, %s - %s / %s - %s",rua, numero, complemento, cidade, estado);
+        comboBoxEndereco.addItem(formattedContatoInfo);
+        Color foregroundColor = new Color(0,0,0);
+        comboBoxEndereco.setForeground(foregroundColor);
+        Color backgroundColor = new Color(0, 110, 255);
+        comboBoxEndereco.setBackground(backgroundColor);
     }
 
     public void addContatoToComboBox(String nomeContato,String telefone, String email) {
@@ -221,6 +227,19 @@ public class CadastroUserView extends javax.swing.JPanel {
         addContatoFrame.setLocationRelativeTo(null);
         addContatoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         addContatoFrame.setVisible(true);
+
+    }
+
+    private void openAddEnderecoWindow(){
+        JFrame addEnderecoFrame = new JFrame("ADICIONAR NOVO ENDEREÇO");
+        addEnderecoFrame.setSize(400, 550);
+        addEnderecoFrame.setLayout(new BorderLayout());
+        EnderecoController enderecoController = new EnderecoController();
+        EnderecoView enderecoView = new EnderecoView(enderecoController, this);
+        addEnderecoFrame.add(enderecoView, BorderLayout.CENTER);
+        addEnderecoFrame.setLocationRelativeTo(null);
+        addEnderecoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        addEnderecoFrame.setVisible(true);
 
     }
 
