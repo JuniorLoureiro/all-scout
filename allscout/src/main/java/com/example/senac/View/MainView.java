@@ -2,121 +2,156 @@ package com.example.senac.View;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class MainView extends JPanel{
+public class MainView extends JPanel {
     private JPanel sidePanel;
-    private JPanel contentPanel;
-    private JLabel logoAllScout;
+    private JPanel panelView;
+    private JButton botaoConfig;
+    private JButton botaoPerfil;
+    private JButton botaoPesquisa;
+    private JButton botaoSair;
+    private JLabel logoLabel;
 
     public MainView() {
-        setSize(800, 600);
+        initComponents();
+    }
+
+    private void initComponents() {
+        // Configurações do painel principal
+        setBackground(new Color(2, 31, 57));
+        setForeground(new Color(2, 31, 57));
+        setPreferredSize(new Dimension(800, 600));
         setLayout(new BorderLayout());
 
-        // Configuração do painel lateral (menu)
-        sidePanel = createSidePanel();
-
-        // Configuração do painel de conteúdo principal
-        contentPanel = new JPanel();
-        contentPanel.setBackground(new java.awt.Color(2, 31, 57));
-        contentPanel.setLayout(new CardLayout()); // Permite a troca de conteúdo
-        contentPanel.add(new JLabel("Bem-vindo! Selecione uma opção do menu.", SwingConstants.CENTER), "home");
-        add(contentPanel, BorderLayout.CENTER);
-
-        // Adiciona o painel lateral
+        // Painel lateral
+        sidePanel = new JPanel();
+        sidePanel.setBackground(new Color(0, 0, 0));
+        sidePanel.setForeground(new Color(0, 110, 255));
         sidePanel.setPreferredSize(new Dimension(200, 600));
+
+        logoLabel = new JLabel();
+        logoLabel.setIcon(new ImageIcon(getClass().getResource("/com/example/senac/View/LogoMenu.png")));
+
+        botaoPesquisa = criarBotao("PESQUISA");
+        botaoPesquisa.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                botaoPesquisaActionPerformed(evt);
+            }
+        });
+
+        botaoPerfil = criarBotao("PERFIL");
+        botaoPerfil.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                botaoPerfilActionPerformed(evt);
+            }
+        });
+
+        botaoConfig = criarBotao("CONFIGURAÇÃO");
+        botaoConfig.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                botaoConfigActionPerformed(evt);
+            }
+        });
+
+        botaoSair = criarBotao("SAIR");
+        botaoSair.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                botaoSairActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout sidePanelLayout = new javax.swing.GroupLayout(sidePanel);
+        sidePanel.setLayout(sidePanelLayout);
+        sidePanelLayout.setHorizontalGroup(
+            sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botaoPesquisa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botaoPerfil, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botaoConfig, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botaoSair, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(sidePanelLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        sidePanelLayout.setVerticalGroup(
+            sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sidePanelLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(botaoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botaoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botaoConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botaoSair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(262, Short.MAX_VALUE))
+        );
+
+        // Painel de conteúdo
+        panelView = new JPanel();
+        panelView.setBackground(new Color(2, 31, 57));
+        panelView.setPreferredSize(new Dimension(600, 600));
+        panelView.setLayout(new BorderLayout());
+
+        // Adicionando os painéis ao painel principal
         add(sidePanel, BorderLayout.WEST);
-        sidePanel.setVisible(true);
+        add(panelView, BorderLayout.CENTER);
     }
 
-    private JPanel createSidePanel() {
-        JPanel panel = new JPanel();
-        panel.setLayout(new BorderLayout());
-        panel.setBackground(new java.awt.Color(0, 0, 0));
-
-        // Inicializa o JLabel da logo e adiciona ao painel
-        logoAllScout = new JLabel();
-        logoAllScout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/example/senac/View/Login.png")));
-        panel.add(logoAllScout, BorderLayout.NORTH);
-
-        JPanel buttonPanel = new JPanel(new GridLayout(0, 1)); // GridLayout com uma coluna e linhas indefinidas
-        buttonPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        buttonPanel.setBackground(Color.BLACK);
-
-        addMenuItem(buttonPanel, "Perfil", new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                showContent();
-            }
-        });
-        addMenuItem(buttonPanel, "", new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                showContent();
-            }
-        });
-        addMenuItem(buttonPanel, "", new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                showContent();
-            }
-        });
-        addMenuItem(buttonPanel, "Configurações", new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                showContent();
-            }
-        });
-        addMenuItem(buttonPanel, "Sair da Conta", new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                showContent();
-            }
-        });
-
-        panel.add(buttonPanel, BorderLayout.CENTER);
-
-        return panel;
+    private JButton criarBotao(String texto) {
+        JButton botao = new JButton();
+        botao.setBackground(new Color(0, 0, 0));
+        botao.setFont(new Font("Segoe UI Black", Font.PLAIN, 20));
+        botao.setForeground(new Color(0, 110, 255));
+        botao.setText(texto);
+        botao.setBorder(new javax.swing.border.LineBorder(new Color(0, 110, 255), 3, true));
+        return botao;
     }
 
-    private void addMenuItem(JPanel panel, String name, final ActionListener actionListener) {
-        JButton button = new JButton(name);
-        button.setHorizontalAlignment(SwingConstants.CENTER);
-        button.setBackground(new java.awt.Color(0, 0, 0));
-        button.setForeground(new java.awt.Color(0, 110, 255));
-        button.setSize(200, 100);
-        button.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 110, 255)));
-        button.setFont(new java.awt.Font("Segoe UI Black", 1, 20));
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                actionListener.actionPerformed(e);
-            }
-        });
-        panel.add(button);
+    private void botaoPesquisaActionPerformed(ActionEvent evt) {
+        setContent("Pesquisa");
     }
 
-    private void setContentPanel(JPanel panel) {
-        contentPanel.removeAll();
-        contentPanel.add(panel, BorderLayout.CENTER);
-        contentPanel.revalidate();
-        contentPanel.repaint();
+    private void botaoPerfilActionPerformed(ActionEvent evt) {
+        setContent("Perfil");
     }
 
-    // Métodos para mostrar diferentes conteúdos
-    private void showContent() {
-        setContent("Test");
+    private void botaoConfigActionPerformed(ActionEvent evt) {
+        setContent("Configuração");
+    }
+
+    private void botaoSairActionPerformed(ActionEvent evt) {
+        // Obtenha a referência ao JFrame principal
+        JFrame loginFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+
+        // Crie uma instância da MainView
+        LoginView loginView = new LoginView();
+
+        // Substitua o painel atual pelo painel da MainView
+        loginFrame.setContentPane(loginView);
+        loginFrame.revalidate();
     }
 
     private void setContent(String content) {
-        contentPanel.removeAll();
-        contentPanel.add(new JLabel(content), BorderLayout.CENTER);
-        contentPanel.revalidate();
-        contentPanel.repaint();
+        panelView.removeAll();
+        panelView.add(new JLabel(content), BorderLayout.CENTER);
+        panelView.revalidate();
+        panelView.repaint();
     }
 
-    public JPanel getMainPanel() {
-        return contentPanel;
+    private void setContentPanel(JPanel panel) {
+        panelView.removeAll();
+        panelView.add(panel, BorderLayout.CENTER);
+        panelView.revalidate();
+        panelView.repaint();
     }
 
     public static void main(String[] args) {
