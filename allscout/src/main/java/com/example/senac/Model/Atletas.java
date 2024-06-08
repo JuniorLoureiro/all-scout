@@ -3,6 +3,7 @@ package com.example.senac.Model;
 import java.util.List;
 
 public class Atletas {
+    private long id;
     private String nome;
     private String dataNasc;
     private String clubeAtual;
@@ -22,6 +23,12 @@ public class Atletas {
         this.infoGeral = infoGeral;
     }
     //Getters and Setters
+    public long getId() {
+        return id;
+    }
+    public void setId(long id) {
+        this.id = id;
+    }
     public String getNome() {
         return nome;
     }
