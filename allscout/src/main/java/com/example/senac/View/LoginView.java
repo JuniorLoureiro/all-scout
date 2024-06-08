@@ -1,10 +1,8 @@
 package com.example.senac.View;
-import java.awt.BorderLayout;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 public class LoginView extends javax.swing.JPanel {
@@ -22,7 +20,6 @@ public class LoginView extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         labelSenha = new javax.swing.JLabel();
         logoAllScout = new javax.swing.JLabel();
-
         textFieldSenha = new javax.swing.JPasswordField();
         labelUsername = new javax.swing.JLabel();
         textFieldUsername = new javax.swing.JTextField();
@@ -62,10 +59,12 @@ public class LoginView extends javax.swing.JPanel {
         botaoLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!textFieldUsername.getText().isEmpty() && textFieldSenha.getPassword().length > 0) {
-                    showMainView();
+                String username = textFieldUsername.getText();
+                String password = new String(textFieldSenha.getPassword());
+                if (username.equals("Roppa") && password.equals("123")) {
+                    showAdmMainView();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Erro ao fazer login");
+                    showMainView();
                 }
             }
         });
@@ -157,13 +156,18 @@ public class LoginView extends javax.swing.JPanel {
     private void showMainView() {
         // Obtenha a referência ao JFrame principal
         JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-
         // Crie uma instância da MainView
         MainView mainView = new MainView();
-
         // Substitua o painel atual pelo painel da MainView
         mainFrame.setContentPane(mainView);
         mainFrame.revalidate();
+    }
+
+    private void showAdmMainView() {
+        JFrame admMainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        AdmMainView admMainView = new AdmMainView();
+        admMainFrame.setContentPane(admMainView);
+        admMainFrame.revalidate();
     }
 
     private void showCadastroUserView() {
