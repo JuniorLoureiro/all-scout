@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 public class LoginView extends javax.swing.JPanel {
@@ -61,7 +62,11 @@ public class LoginView extends javax.swing.JPanel {
         botaoLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                showMainView();
+                if (!textFieldUsername.getText().isEmpty() && textFieldSenha.getPassword().length > 0) {
+                    showMainView();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Erro ao fazer login");
+                }
             }
         });
 
