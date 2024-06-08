@@ -121,7 +121,22 @@ public class MainView extends JPanel {
     }
 
     private void botaoPerfilActionPerformed(ActionEvent evt) {
-        setContent("Perfil");
+        AlteraDadosUserView alteraDadosUserView = new AlteraDadosUserView();
+        setContentPanel(alteraDadosUserView);
+        /* 
+        JFrame AlteraDadosUserFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        AlteraDadosUserView alteraDadosUserView = new AlteraDadosUserView();
+        AlteraDadosUserFrame.setContentPane(alteraDadosUserView);
+        AlteraDadosUserFrame.revalidate();
+
+        */
+
+        /*private void showUsuario() {
+        UsuarioController controller = new UsuarioController();
+        setContentPanel(new UsuarioView(controller));
+    } */
+        
+        
     }
 
     private void botaoConfigActionPerformed(ActionEvent evt) {
