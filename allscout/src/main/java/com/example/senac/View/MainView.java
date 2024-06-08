@@ -129,15 +129,11 @@ public class MainView extends JPanel {
     }
 
     private void botaoSairActionPerformed(ActionEvent evt) {
-        // Obtenha a referência ao JFrame principal
         JFrame loginFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-
-        // Crie uma instância da MainView
         LoginView loginView = new LoginView();
-
-        // Substitua o painel atual pelo painel da MainView
         loginFrame.setContentPane(loginView);
         loginFrame.revalidate();
+        JOptionPane.showMessageDialog(loginFrame, "Desconectado com sucesso!", "Informação", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void setContent(String content) {
