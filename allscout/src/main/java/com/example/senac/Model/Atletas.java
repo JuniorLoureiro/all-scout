@@ -1,25 +1,53 @@
 package com.example.senac.Model;
 
-import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+import java.util.*;
+
+@Entity
+@Table(name = "ATLETAS")
 public class Atletas {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column (name = "NOME")
     private String nome;
+    @Column (name = "DATA_NASCIMENTO")
     private String dataNasc;
+    @Column (name = "CLUBE_ATUAL")
     private String clubeAtual;
+    @Column (name = "CLUBE_FORMADOR")
     private String clubeFormador;
+    @JoinColumn(name = "AGENCIADOR", referencedColumnName ="ID_AGENCIADOR")
+    @OneToOne(cascade={CascadeType.PERSIST})
     private Agenciador agenciador;
-    private List<Estatistica> estatistica;
+    @OneToMany(mappedBy = "ATLETAS", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Estatistica> estatisticas = new ArrayList<Estatistica>(); 
+    @JoinColumn(name = "INFO_GERAL", referencedColumnName = "ID_INFO")
+    @OneToOne(cascade={CascadeType.PERSIST})
     private InfoGeral infoGeral;
     //Constructor
+   
     public Atletas(String nome, String dataNasc, String clubeAtual, String clubeFormador, Agenciador agenciador,
-            List<Estatistica> estatistica, InfoGeral infoGeral) {
+            List<Estatistica> estatisticas, InfoGeral infoGeral) {
         this.nome = nome;
         this.dataNasc = dataNasc;
         this.clubeAtual = clubeAtual;
         this.clubeFormador = clubeFormador;
         this.agenciador = agenciador;
-        this.estatistica = estatistica;
+        this.estatisticas = estatisticas;
         this.infoGeral = infoGeral;
     }
     //Getters and Setters
@@ -59,11 +87,11 @@ public class Atletas {
     public void setAgenciador(Agenciador agenciador) {
         this.agenciador = agenciador;
     }
-    public List<Estatistica> getEstatistica() {
-        return estatistica;
+    public List<Estatistica> getEstatisticas() {
+        return estatisticas;
     }
-    public void setEstatistica(List<Estatistica> estatistica) {
-        this.estatistica = estatistica;
+    public void setEstatistica(List<Estatistica> estatisticas) {
+        this.estatisticas = estatisticas;
     }
     public InfoGeral getInfoGeral() {
         return infoGeral;

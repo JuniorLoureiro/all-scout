@@ -1,10 +1,29 @@
 package com.example.senac.Model;
 
-public class Contato {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+
+@Entity
+@Table (name="CLIENTES")
+public class Contato {
+   
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name= "ID_CONTATO")
+    private long id;
+    @Column (name= "NOME")
     private String nomeContato;
+    @Column (name= "TELEFONE")
     private String telefone;
+    @Column (name= "EMAIL")
     private String email;
+
+    
 
     public Contato(String nomeContato,String telefone, String email) {
         this.nomeContato = nomeContato;
@@ -30,6 +49,14 @@ public class Contato {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     
