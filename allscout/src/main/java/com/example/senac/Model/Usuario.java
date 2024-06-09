@@ -46,7 +46,7 @@ public class Usuario extends Pessoa {
         this.nomeUsuario = nomeUsuario;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

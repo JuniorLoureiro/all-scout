@@ -45,7 +45,7 @@ public class Moderador extends Usuario {
         StatusAtividade = statusAtividade;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
