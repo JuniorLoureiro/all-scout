@@ -8,17 +8,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="CLIENTES")
+@Table (name="clientes")
 public class Cliente extends Usuario{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name= "ID_CLIENTE")
     private long id;
+
     @Column(name="IDENTIFICACAO")
     private String identificacao;
 
-    
+
+    public Cliente() {
+    }
 
     public Cliente(String nome, String senha, String nomeUsuario, String identificacao) {
         super(nome, senha, nomeUsuario);
@@ -33,7 +36,7 @@ public class Cliente extends Usuario{
         this.identificacao = identificacao;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

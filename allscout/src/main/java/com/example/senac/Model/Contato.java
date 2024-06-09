@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table (name="CLIENTES")
+@Table (name="contato")
 public class Contato {
    
     @Id
@@ -23,7 +23,9 @@ public class Contato {
     @Column (name= "EMAIL")
     private String email;
 
-    
+    public Contato() {
+        
+    }
 
     public Contato(String nomeContato,String telefone, String email) {
         this.nomeContato = nomeContato;

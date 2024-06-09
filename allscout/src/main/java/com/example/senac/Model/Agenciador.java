@@ -1,42 +1,32 @@
 package com.example.senac.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table (name = "ANGENCIADOR")
+@Table(name = "agenciador")
+@PrimaryKeyJoinColumn(name = "ID_PESSOA")
+public class Agenciador extends Pessoa {
 
-public class Agenciador extends Pessoa{
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "ID_AGENCIADOR")
-    private long id;
-
-    @Column (name="CPF/CNPJ")
+    @Column(name = "CPF_CNPJ")
     private String cpfCnpj;
-   
-   
-    //Contructor
+
+    // Construtor padrão exigido pelo JPA
+    public Agenciador() {
+        super();
+    }
+
+    // Construtor com parâmetros
     public Agenciador(String nome, String cpfCnpj) {
         super(nome);
         this.cpfCnpj = cpfCnpj;
     }
-    //Getters and Setters
+
+    // Getters and Setters
     public String getCpfCnpj() {
         return cpfCnpj;
     }
+
     public void setCpfCnpj(String cpfCnpj) {
         this.cpfCnpj = cpfCnpj;
-    }
-    public Long getId() {
-        return id;
-    }
-    public void setId(long id) {
-        this.id = id;
     }
 }
