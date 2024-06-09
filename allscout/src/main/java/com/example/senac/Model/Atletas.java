@@ -31,7 +31,7 @@ public class Atletas {
     @Column(name = "ALTURA")
     private int alturaCm;
 
-    @JoinColumn(name = "ID_AGENCIADOR", referencedColumnName = "ID_PESSOA")
+    @JoinColumn(name = "ID_AGENCIADOR")
     @OneToOne(cascade = {CascadeType.PERSIST})
     private Agenciador agenciador;
 
