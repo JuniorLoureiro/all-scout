@@ -3,9 +3,17 @@ package com.example.senac.Model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "agenciador")
-@PrimaryKeyJoinColumn(name = "ID_PESSOA")
-public class Agenciador extends Pessoa {
+@Table(name = "agenciadores")
+
+public class Agenciador {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name= "ID_AGENCIADOR")
+    private long id;
+
+    @Column(name = "NOME")
+    private String nome;
 
     @Column(name = "CPF_CNPJ")
     private String cpfCnpj;
@@ -17,7 +25,7 @@ public class Agenciador extends Pessoa {
 
     // Construtor com parâmetros
     public Agenciador(String nome, String cpfCnpj) {
-        super(nome);
+        this.nome = nome;
         this.cpfCnpj = cpfCnpj;
     }
 
@@ -28,5 +36,21 @@ public class Agenciador extends Pessoa {
 
     public void setCpfCnpj(String cpfCnpj) {
         this.cpfCnpj = cpfCnpj;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

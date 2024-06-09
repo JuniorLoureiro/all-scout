@@ -229,3 +229,4 @@ public class AlteraDadosUserView extends JPanel {
         SenhaTextField.setEnabled(SenhaCheckBox.isSelected());
     }
 }
+ 

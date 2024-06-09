@@ -1,22 +1,32 @@
 package com.example.senac.Model;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
-import com.example.senac.Model.Pessoa;
+
 
 @Entity
 @Table (name = "usuarios")
-public class Usuario extends Pessoa {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+
+public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name= "ID_MODERADORES")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (name= "ID_USUARIO")
     private long id;
+
+    @Column (name= "NOME")
+    private String nome;
 
     @Column (name= "SENHA")
     private String senha;
@@ -28,7 +38,7 @@ public class Usuario extends Pessoa {
         
     }
     public Usuario(String nome, String senha, String nomeUsuario) {
-        super(nome);
+        this.nome = nome;
         this.senha = senha;
         this.nomeUsuario = nomeUsuario;
     }
@@ -55,6 +65,12 @@ public class Usuario extends Pessoa {
 
     public void setId(long id) {
         this.id = id;
+    }
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     
