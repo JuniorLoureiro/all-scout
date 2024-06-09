@@ -12,7 +12,7 @@ import javax.swing.*;
 
 public class App extends JFrame {
     public static void main(String[] args) {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa");
+        /*EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         
         // Inserindo uma nova pessoa no banco de dados
@@ -23,7 +23,7 @@ public class App extends JFrame {
         // Fechando o EntityManager e o EntityManagerFactory
         entityManager.close();
         entityManagerFactory.close();
-        //SwingUtilities.invokeLater(() -> {
+        //SwingUtilities.invokeLater(() -> { */
             App frame = new App();
             frame.setTitle("AllScout");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
