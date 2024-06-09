@@ -10,20 +10,23 @@ import javax.persistence.Table;
 import com.example.senac.Model.Pessoa;
 
 @Entity
-@Table (name= "USUARIOS")
-
+@Table (name = "usuarios")
 public class Usuario extends Pessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name= "ID_MODERADORES")
     private long id;
+
     @Column (name= "SENHA")
     private String senha;
+
     @Column (name= "NOME_USUARIO")
     private String nomeUsuario;
     
-    
+    public Usuario() {
+        
+    }
     public Usuario(String nome, String senha, String nomeUsuario) {
         super(nome);
         this.senha = senha;
@@ -46,7 +49,7 @@ public class Usuario extends Pessoa {
         this.nomeUsuario = nomeUsuario;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

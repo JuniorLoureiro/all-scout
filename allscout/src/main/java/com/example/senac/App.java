@@ -18,14 +18,18 @@ public class App extends JFrame {
         
         // Inserindo uma nova pessoa no banco de dados
         entityManager.getTransaction().begin();
-        Pessoa p1 = new Pessoa("Pedro");
+        /*Pessoa p1 = new Pessoa("Pedro");
         entityManager.persist(p1);
-        entityManager.getTransaction().commit();
+        entityManager.getTransaction().commit();*/
         // Fechando o EntityManager e o EntityManagerFactory
         entityManager.close();
         entityManagerFactory.close();
+<<<<<<< HEAD
         
         //SwingUtilities.invokeLater(() -> {
+=======
+        //SwingUtilities.invokeLater(() -> { 
+>>>>>>> main
             App frame = new App();
             frame.setTitle("AllScout");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
