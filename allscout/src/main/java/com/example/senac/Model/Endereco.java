@@ -1,13 +1,37 @@
 package com.example.senac.Model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table (name="ENDERECOS")
+
 public class Endereco {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name= "ID_ENDERECO")
+    private long id;
+    @Column (name= "CEP")
     private String cep;
+    @Column (name= "CIDADE")
     private String cidade;
+    @Column (name= "ESTADO")
     private String estado;
+    @Column (name= "PAIS")
     private String pais;
+    @Column (name= "LOGRADOURO")
     private String rua;
+    @Column (name= "NUMERO")
     private String numero;
+    @Column (name= "COMPLETO")
     private String complemento;
+
+    
 
     public Endereco(String cep, String cidade, String estado, String pais, String rua, String numero, String complemento) {
         this.cep = cep;
@@ -83,10 +107,20 @@ public class Endereco {
                 ", cidade='" + cidade + '\'' +
                 ", estado='" + estado + '\'' +
                 ", pais='" + pais + '\'' +
-                ", rua='" + rua + '\'' +
+                ", logradouro='" + rua + '\'' +
                 ", numero='" + numero + '\'' +
                 ", complemento='" + complemento + '\'' +
                 '}';
+    }
+
+
+    public long getId() {
+        return id;
+    }
+
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
 
