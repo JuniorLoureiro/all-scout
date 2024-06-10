@@ -3,6 +3,7 @@ package com.example.senac.View;
 import javax.swing.*;
 
 import com.example.senac.Model.AtletasDAO;
+import com.example.senac.Model.Usuario;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,8 +16,10 @@ public class MainView extends JPanel {
     private JButton botaoPerfil;
     private JButton botaoPesquisa;
     private JLabel logoLabel;
+    private Usuario usuario;
 
-    public MainView() {
+    public MainView(Usuario usuario) {
+        this.usuario = usuario;
         initComponents();
     }
 
@@ -118,23 +121,9 @@ public class MainView extends JPanel {
     }
 
     private void botaoPerfilActionPerformed(ActionEvent evt) {
-        AlteraDadosUserView alteraDadosUserView = new AlteraDadosUserView();
-        setContentPanel(alteraDadosUserView);
-        /* 
-        JFrame AlteraDadosUserFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-        AlteraDadosUserView alteraDadosUserView = new AlteraDadosUserView();
-        AlteraDadosUserFrame.setContentPane(alteraDadosUserView);
-        AlteraDadosUserFrame.revalidate();
-
-        */
-
-        /*private void showUsuario() {
-        UsuarioController controller = new UsuarioController();
-        setContentPanel(new UsuarioView(controller));
-    } */
-        
         
     }
+    
 
     private void botaoConfigActionPerformed(ActionEvent evt) {
         JFrame loginFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
@@ -156,18 +145,5 @@ public class MainView extends JPanel {
         panelView.add(panel, BorderLayout.CENTER);
         panelView.revalidate();
         panelView.repaint();
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                JFrame frame = new JFrame("Main View");
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setSize(800, 600);
-                frame.add(new MainView());
-                frame.setVisible(true);
-            }
-        });
     }
 }

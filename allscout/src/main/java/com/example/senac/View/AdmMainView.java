@@ -1,6 +1,9 @@
 package com.example.senac.View;
 
 import javax.swing.*;
+
+import com.example.senac.Model.Moderador;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,8 +18,10 @@ public class AdmMainView extends JPanel {
     private JLabel miniLogo;
     private JPanel panelView;
     private JPanel sidePanel;
+    private Moderador moderador;
 
-    public AdmMainView() {
+    public AdmMainView(Moderador moderador) {
+        this.moderador = moderador;
         initComponents();
     }
 
