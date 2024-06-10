@@ -22,12 +22,6 @@ public class Atletas {
     @Column(name = "CLUBE_ATUAL")
     private String clubeAtual;
 
-    @Column(name = "CLUBE_FORMADOR")
-    private String clubeFormador;
-
-    @Column(name = "PESO")
-    private int peso;
-
     @Column(name = "ALTURA")
     private int alturaCm;
 
@@ -46,21 +40,30 @@ public class Atletas {
     @Column(name = "PERNA_DOMINANTE")
     private PernaDominante pernaDominante;
 
+    
+    @Column(name = "NACIONALIDADE")
+    private String nacionalidade;
+
+    
+    @Column(name = "NUMERO_CAMISA")
+    private int numeroCamisa;
+
     // Construtor
     public Atletas() {
 
     }
 
-    public Atletas(String nome, String dataNasc, String clubeAtual, String clubeFormador, Agenciador agenciador,
-                   List<Estatistica> estatisticas, Posicao posicao, PernaDominante pernaDominante) {
+    public Atletas(String nome, String dataNasc, String clubeAtual, Agenciador agenciador,
+                   List<Estatistica> estatisticas, Posicao posicao, PernaDominante pernaDominante, String nacionalidade, int numeroCamisa) {
         this.nome = nome;
         this.dataNasc = dataNasc;
         this.clubeAtual = clubeAtual;
-        this.clubeFormador = clubeFormador;
         this.agenciador = agenciador;
         this.estatisticas = estatisticas;
         this.posicao = posicao;
         this.pernaDominante = pernaDominante;
+        this.nacionalidade = nacionalidade;
+        this.numeroCamisa = numeroCamisa;
     }
 
     // Getters and Setters
@@ -96,21 +99,8 @@ public class Atletas {
         this.clubeAtual = clubeAtual;
     }
 
-    public String getClubeFormador() {
-        return clubeFormador;
-    }
 
-    public void setClubeFormador(String clubeFormador) {
-        this.clubeFormador = clubeFormador;
-    }
-
-    public int getPeso() {
-        return peso;
-    }
-
-    public void setPeso(int peso) {
-        this.peso = peso;
-    }
+    
 
     public int getAlturaCm() {
         return alturaCm;
@@ -151,4 +141,22 @@ public class Atletas {
     public void setPernaDominante(PernaDominante pernaDominante) {
         this.pernaDominante = pernaDominante;
     }
+
+    public String getNacionalidade() {
+        return nacionalidade;
+    }
+
+    public void setNacionalidade(String nacionalidade) {
+        this.nacionalidade = nacionalidade;
+    }
+
+    public int getNumeroCamisa() {
+        return numeroCamisa;
+    }
+
+    public void setNumeroCamisa(int numeroCamisa) {
+        this.numeroCamisa = numeroCamisa;
+    }
+
+    
 }

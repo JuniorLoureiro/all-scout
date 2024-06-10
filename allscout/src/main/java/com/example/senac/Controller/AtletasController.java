@@ -17,10 +17,10 @@ public class AtletasController {
         this.atletasDAO = new AtletasDAO(); // Inicializa o AtletasDAO
     }
     
-    public Atletas criarAtleta(String nome, String dataNasc, String clubeAtual, String clubeFormador, 
-            Agenciador agenciador, List<Estatistica> estatisticas, PernaDominante pernaDominante, Posicao posicao) {
+    public Atletas criarAtleta(String nome, String dataNasc, String clubeAtual, 
+            Agenciador agenciador, List<Estatistica> estatisticas, PernaDominante pernaDominante, Posicao posicao, String nacionalidade, int numeroCamisa) {
        
-        Atletas atleta = new Atletas(nome, dataNasc, clubeAtual, clubeFormador, agenciador, estatisticas, posicao, pernaDominante);
+        Atletas atleta = new Atletas(nome, dataNasc, clubeAtual, agenciador, estatisticas, posicao, pernaDominante,nacionalidade,numeroCamisa);
         atletasDAO.adicionarAtleta(atleta); // Adiciona o novo atleta ao banco de dados usando AtletasDAO
         return atleta;
     }
