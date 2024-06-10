@@ -1,12 +1,18 @@
 package com.example.senac.View;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.example.senac.Controller.ContatoController;
+import com.example.senac.Model.Endereco;
 import com.example.senac.Controller.EnderecoController;
+import com.example.senac.Controller.ContatoController;
+import com.example.senac.Model.Usuario;
+
 import java.awt.*;
 
 public class EnderecoView extends JPanel {
@@ -380,31 +386,39 @@ public class EnderecoView extends JPanel {
                         "Erro", JOptionPane.ERROR_MESSAGE);
                 return; 
         }
-        cadastraEndereco();
+        else{
+
+       EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        Endereco end = new Endereco(cep, cidade, estado, pais, rua, numero, complemento);
+        controller.criarEndereco(cep, cidade, estado, pais, rua, numero, complemento);
+
+        entityManager.persist(end);
+        entityManager.getTransaction().commit();
+
+        entityManager.close();
+        entityManagerFactory.close();
+
+        JOptionPane.showMessageDialog(this, "Endereço cadastrado com sucesso!.");
+
+        textFieldLogradouro.setText("");
+        textFieldNumero.setText("");
+        textFieldComplemento.setText("");
+        textFieldEstado.setText("");
+        textFieldCidade.setText("");
+        textFieldPais.setText("");
+        textFieldCEP.setText("");
+        
+    
         showCadastroContatoView();
+        }
         
     }
 
-    protected void cadastraEndereco(){
-        String rua = textFieldLogradouro.getText();
-        String numero = textFieldNumero.getText();
-        String complemento = textFieldComplemento.getText();
-        String cidade = textFieldEstado.getText();
-        String estado = textFieldCidade.getText();
-        String pais = textFieldPais.getText();
-        String cep = textFieldCEP.getText();
-
-        if (rua.isEmpty() || numero.isEmpty() || complemento.isEmpty()|| cidade.isEmpty()|| estado.isEmpty()|| pais.isEmpty()|| cep.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos obrigatórios.",
-                        "Erro", JOptionPane.ERROR_MESSAGE);
-                return; 
-        }
-        else{
-            controller.criarEndereco(cep, cidade, estado, pais, rua, numero, complemento);
-            JOptionPane.showMessageDialog(this, "Endereço adicionado com Sucesso!");
-
-        }
-    }
+    
 
     private void showCadastroContatoView() {
     // Obtém o frame pai do JPanel atual

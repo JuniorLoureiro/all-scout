@@ -1,10 +1,15 @@
 package com.example.senac.View;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import com.example.senac.Controller.ContatoController;
+import com.example.senac.Model.Contato;
+
 import java.awt.*;
 
 public class ContatoView extends JPanel {
@@ -237,26 +242,51 @@ public class ContatoView extends JPanel {
                         "Erro", JOptionPane.ERROR_MESSAGE);
                 return; 
         }
-        cadastraContato();
-        
-        
-        
-    }
-
-    protected void cadastraContato(){
-        String nomeContato = textFieldNomeDoContato.getText();
-        String numTelefone = textFieldTelefoneContato.getText();
-        String email = textFieldEmailContato.getText();
-
-        if (nomeContato.isEmpty() || numTelefone.isEmpty() || email.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos obrigatórios.",
-                        "Erro", JOptionPane.ERROR_MESSAGE);
-                return; 
-        }
         else{
-            controller.criarContato(nomeContato,numTelefone, email);
-            JOptionPane.showMessageDialog(this, "Contato adicionado com Sucesso!");
+         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+
+        Contato contato = new Contato(nomeContato, numTelefone, email);
+        controller.criarContato(nomeContato, numTelefone, email);
+
+        entityManager.persist(contato);
+        entityManager.getTransaction().commit();
+
+        entityManager.close();
+        entityManagerFactory.close();
+
+        JOptionPane.showMessageDialog(this, "Endereço cadastrado com sucesso!.");
+
+        textFieldNomeDoContato.setText("");
+        textFieldTelefoneContato.setText("");
+        textFieldEmailContato.setText("");
+        
+
+        showLoginView ();
+        }
+        
+        }
+
+        private void showLoginView (){
+
+            JFrame contatofFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+
+          
+            LoginView login = new LoginView();
+
+   
+            contatofFrame.setContentPane(login);
+
+
+            contatofFrame.revalidate();
+            contatofFrame.repaint();
 
         }
     }
-}
+        
+           
+
+
+
