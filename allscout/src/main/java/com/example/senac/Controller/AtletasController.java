@@ -2,9 +2,7 @@ package com.example.senac.Controller;
 
 import com.example.senac.Model.Agenciador;
 import com.example.senac.Model.Atletas;
-import com.example.senac.Model.AtletasDAO;
 import com.example.senac.Model.Estatistica;
-import com.example.senac.Model.Moderador;
 import com.example.senac.Model.PernaDominante;
 import com.example.senac.Model.Posicao;
 
@@ -18,7 +16,6 @@ import javax.persistence.TypedQuery;
 public class AtletasController {
     private EntityManagerFactory entityManagerFactory;
     private EntityManager entityManager;
-    private Atletas atleta;
 
     public AtletasController(EntityManager entityManager) {
         entityManagerFactory = Persistence.createEntityManagerFactory("jpa");

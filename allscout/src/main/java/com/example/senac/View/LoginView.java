@@ -29,9 +29,7 @@ public class LoginView extends javax.swing.JPanel {
         usuarioController = new UsuarioController();
         moderadorController = new ModeradorController();
     }
-
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+                     
     private void initComponents() {
         jPanel1 = new javax.swing.JPanel();
         labelSenha = new javax.swing.JLabel();

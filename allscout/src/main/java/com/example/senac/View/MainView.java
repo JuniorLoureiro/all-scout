@@ -6,7 +6,6 @@ import javax.persistence.Persistence;
 import javax.swing.*;
 
 import com.example.senac.Controller.AtletasController;
-import com.example.senac.Model.AtletasDAO;
 import com.example.senac.Model.Usuario;
 
 import java.awt.*;
