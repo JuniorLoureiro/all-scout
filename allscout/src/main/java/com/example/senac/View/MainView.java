@@ -1,6 +1,9 @@
 package com.example.senac.View;
 
 import javax.swing.*;
+
+import com.example.senac.Model.AtletasDAO;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -116,8 +119,10 @@ public class MainView extends JPanel {
         return botao;
     }
 
-    private void botaoPesquisaActionPerformed(ActionEvent evt) {
-        setContent("Pesquisa");
+        private void botaoPesquisaActionPerformed(ActionEvent evt) {
+        AtletasDAO atletasDAO = new AtletasDAO(); // Criando uma instância válida de AtletasDAO
+        SearchView searchView = new SearchView(atletasDAO);
+        setContentPanel(searchView);
     }
 
     private void botaoPerfilActionPerformed(ActionEvent evt) {
