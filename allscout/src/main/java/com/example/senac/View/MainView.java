@@ -144,12 +144,12 @@ public class MainView extends JPanel {
         JOptionPane.showMessageDialog(loginFrame, "Desconectado com sucesso!", "Informação", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    private void setContent(String content) {
+    /*private void setContent(String content) {
         panelView.removeAll();
         panelView.add(new JLabel(content), BorderLayout.CENTER);
         panelView.revalidate();
         panelView.repaint();
-    }
+    }*/
 
     private void setContentPanel(JPanel panel) {
         panelView.removeAll();
