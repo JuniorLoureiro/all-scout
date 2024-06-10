@@ -2,6 +2,7 @@ package com.example.senac.Model;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+/* 
 
 public enum Posicao {
     @Enumerated(EnumType.STRING)
@@ -16,3 +17,4 @@ public enum Posicao {
     CENTROAVANTE,
     
 }
+    */

@@ -2,6 +2,7 @@ package com.example.senac.Model;
 
 import javax.persistence.*;
 
+/* 
 @Entity
 @Table(name = "agenciadores")
 
@@ -54,3 +55,4 @@ public class Agenciador {
         this.nome = nome;
     }
 }
+    */

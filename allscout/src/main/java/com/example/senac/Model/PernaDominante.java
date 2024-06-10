@@ -3,6 +3,7 @@ package com.example.senac.Model;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+/* 
 public enum PernaDominante {
     @Enumerated(EnumType.STRING)
     ESQUERDA,
@@ -11,3 +12,4 @@ public enum PernaDominante {
     @Enumerated(EnumType.STRING)
     AMBIDESTRO;
 }
+*/
