@@ -173,7 +173,8 @@ public class AdmMainView extends JPanel {
     }
 
     private void botaoAgcUsuarioActionPerformed(ActionEvent evt) {
-        // Implementação do evento do botão "GERENCIAR USUÁRIO"
+        GerenciarUser gerenciarUser = new GerenciarUser();
+        setContentPanel(gerenciarUser);
     }
 
     private void botaoSairActionPerformed(ActionEvent evt) {

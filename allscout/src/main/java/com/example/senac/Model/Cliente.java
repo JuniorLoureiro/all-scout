@@ -1,12 +1,8 @@
 package com.example.senac.Model;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
 

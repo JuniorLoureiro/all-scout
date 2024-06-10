@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.*;
 
+import com.example.senac.Controller.AtletasController;
 import com.example.senac.Model.AtletasDAO;
 import com.example.senac.Model.Usuario;
 
@@ -117,11 +118,14 @@ public class MainView extends JPanel {
         return botao;
     }
 
-        private void botaoPesquisaActionPerformed(ActionEvent evt) {
-        AtletasDAO atletasDAO = new AtletasDAO(); // Criando uma instância válida de AtletasDAO
-        SearchView searchView = new SearchView(atletasDAO);
+    private void botaoPesquisaActionPerformed(ActionEvent evt) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        AtletasController atletasController = new AtletasController(entityManager);
+        SearchView searchView = new SearchView(atletasController);
         setContentPanel(searchView);
     }
+
 
     private void botaoPerfilActionPerformed(ActionEvent evt) {
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa");
