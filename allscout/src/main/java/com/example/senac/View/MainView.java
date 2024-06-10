@@ -11,10 +11,9 @@ import java.awt.event.ActionListener;
 public class MainView extends JPanel {
     private JPanel sidePanel;
     private JPanel panelView;
-    private JButton botaoConfig;
+    private JButton botaoSair;
     private JButton botaoPerfil;
     private JButton botaoPesquisa;
-    private JButton botaoSair;
     private JLabel logoLabel;
 
     public MainView() {
@@ -51,17 +50,10 @@ public class MainView extends JPanel {
             }
         });
 
-        botaoConfig = criarBotao("CONFIGURAÇÃO");
-        botaoConfig.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                botaoConfigActionPerformed(evt);
-            }
-        });
-
         botaoSair = criarBotao("SAIR");
         botaoSair.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                botaoSairActionPerformed(evt);
+                botaoConfigActionPerformed(evt);
             }
         });
 
@@ -74,7 +66,7 @@ public class MainView extends JPanel {
                 .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botaoPesquisa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botaoPerfil, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botaoConfig, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botaoSair, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botaoSair, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(sidePanelLayout.createSequentialGroup()
@@ -92,7 +84,7 @@ public class MainView extends JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botaoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botaoConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botaoSair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botaoSair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(262, Short.MAX_VALUE))
@@ -145,10 +137,6 @@ public class MainView extends JPanel {
     }
 
     private void botaoConfigActionPerformed(ActionEvent evt) {
-        setContent("Configuração");
-    }
-
-    private void botaoSairActionPerformed(ActionEvent evt) {
         JFrame loginFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         LoginView loginView = new LoginView();
         loginFrame.setContentPane(loginView);
