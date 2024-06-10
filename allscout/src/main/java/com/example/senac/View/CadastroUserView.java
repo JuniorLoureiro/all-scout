@@ -5,14 +5,29 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
+import com.example.senac.Controller.UsuarioController;
 import com.example.senac.Controller.ContatoController;
 import com.example.senac.Controller.EnderecoController;
 
+import com.example.senac.Model.Usuario;
+
+import com.example.senac.Model.Endereco;
+
+import com.example.senac.Model.Contato;
+
 public class CadastroUserView extends javax.swing.JPanel {
 
-    public CadastroUserView() {
+
+    UsuarioController controller =  new UsuarioController();
+
+    public CadastroUserView( ) {
+       
         panelCadastro();
     }
 
@@ -34,6 +49,8 @@ public class CadastroUserView extends javax.swing.JPanel {
         comboBoxContato = new javax.swing.JComboBox<>();
         labelNomeCompleto = new javax.swing.JLabel();
         logoAllScout = new javax.swing.JLabel();
+
+
 
         setBackground(new java.awt.Color(2, 31, 57));
 
@@ -58,6 +75,15 @@ public class CadastroUserView extends javax.swing.JPanel {
         botaoCadastrar.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         botaoCadastrar.setForeground(new java.awt.Color(0, 0, 0));
         botaoCadastrar.setText("CADASTRAR");
+        botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                
+                botaoCadastrarActionPerfomed(evt);
+            }
+        });
+
+
 
         textFieldSenha.setBackground(new java.awt.Color(0, 0, 0));
         textFieldSenha.setForeground(new java.awt.Color(0, 110, 255));
@@ -195,8 +221,11 @@ public class CadastroUserView extends javax.swing.JPanel {
 
     private void botaoCadastraContatoActionPerformed(java.awt.event.ActionEvent evt) {
         openAddContatoWindow();
-        
-        
+    
+    }
+
+    private void botaoCadastrarActionPerfomed (java.awt.event.ActionEvent evt){
+        cadastrarUsuario();
     }
 
     public void addEnderecoToComboBox(String rua, String numero, String complemento, String cidade, String estado, String pais, String cep) {
@@ -242,6 +271,55 @@ public class CadastroUserView extends javax.swing.JPanel {
         addEnderecoFrame.setVisible(true);
 
     }
+    protected void cadastrarUsuario() {
+        String nome = textFieldNomeCompleto.getText();
+        String user = textFieldUsername.getText();
+        String senha = textFieldSenha.getText(); 
+        Endereco endereco = (Endereco) comboBoxEndereco.getSelectedItem();
+        Contato contato = (Contato) comboBoxContato.getSelectedItem();
+    
+        if (nome.isEmpty() || user.isEmpty() || senha.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos obrigatórios.",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+    
+    
+        if (comboBoxContato.getItemCount() == 0) {
+            JOptionPane.showMessageDialog(this, "Selecione ao menos um contato para cadastro'.",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        } 
+    
+         if (comboBoxEndereco.getItemCount() == 0) {
+            JOptionPane.showMessageDialog(this, "Selecione ao menos um endereço para cadastro'.",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+    
+         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+    
+        Usuario usuario = new Usuario(nome, senha, user);
+        controller.criarUsuario(nome, contato, endereco, senha, nome);
+
+        entityManager.persist(usuario);
+        entityManager.getTransaction().commit();
+
+        entityManager.close();
+        entityManagerFactory.close();
+    
+        JOptionPane.showMessageDialog(this, "Usuario cadastrado com sucesso.");
+    
+        textFieldSenha.setText("");
+        textFieldUsername.setText("");
+        textFieldNomeCompleto.setText("");
+        
+        
+    }
+
 
     // Variables declaration - do not modify
     private javax.swing.JButton botaoCadastraContato;
