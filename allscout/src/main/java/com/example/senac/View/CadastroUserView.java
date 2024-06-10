@@ -17,6 +17,10 @@ import com.example.senac.Controller.EnderecoController;
 
 import com.example.senac.Model.Usuario;
 
+import com.example.senac.Model.Endereco;
+
+import com.example.senac.Model.Contato;
+
 public class CadastroUserView extends javax.swing.JPanel {
 
 
@@ -271,8 +275,8 @@ public class CadastroUserView extends javax.swing.JPanel {
         String nome = textFieldNomeCompleto.getText();
         String user = textFieldUsername.getText();
         String senha = textFieldSenha.getText(); 
-        String endereco = (String) comboBoxEndereco.getSelectedItem();
-        String contato = (String) comboBoxContato.getSelectedItem();
+        Endereco endereco = (Endereco) comboBoxEndereco.getSelectedItem();
+        Contato contato = (Contato) comboBoxContato.getSelectedItem();
     
         if (nome.isEmpty() || user.isEmpty() || senha.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos obrigatórios.",
@@ -281,17 +285,17 @@ public class CadastroUserView extends javax.swing.JPanel {
         }
     
     
-       /*  if (comboBoxContato.getItemCount() == 0) {
+        if (comboBoxContato.getItemCount() == 0) {
             JOptionPane.showMessageDialog(this, "Selecione ao menos um contato para cadastro'.",
                     "Erro", JOptionPane.ERROR_MESSAGE);
             return;
-        } */
+        } 
     
-         /*if (comboBoxEndereco.getItemCount() == 0) {
+         if (comboBoxEndereco.getItemCount() == 0) {
             JOptionPane.showMessageDialog(this, "Selecione ao menos um endereço para cadastro'.",
                     "Erro", JOptionPane.ERROR_MESSAGE);
             return;
-        }*/
+        }
     
          EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -299,7 +303,7 @@ public class CadastroUserView extends javax.swing.JPanel {
         entityManager.getTransaction().begin();
     
         Usuario usuario = new Usuario(nome, senha, user);
-        controller.criarUsuario(nome, senha, user);
+        controller.criarUsuario(nome, contato, endereco, senha, nome);
 
         entityManager.persist(usuario);
         entityManager.getTransaction().commit();

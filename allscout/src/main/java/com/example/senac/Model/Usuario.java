@@ -1,5 +1,6 @@
 package com.example.senac.Model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -9,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
@@ -22,8 +25,16 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column (name= "ID_USUARIO")
+    @Column (name= "ID")
     private long id;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ENDERECO_ID", referencedColumnName = "ID_ENDERECO")
+    private Endereco endereco;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CONTATO_ID", referencedColumnName = "ID_CONTATO")
+    private Contato contato;
 
     @Column (name= "NOME")
     private String nome;
