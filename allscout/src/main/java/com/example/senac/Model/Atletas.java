@@ -25,20 +25,24 @@ public class Atletas {
     @Column(name = "ALTURA")
     private int alturaCm;
 
+    /* 
     @JoinColumn(name = "ID_AGENCIADOR")
     @OneToOne(cascade = {CascadeType.PERSIST})
     private Agenciador agenciador;
+    
 
     @OneToMany(mappedBy = "atleta", cascade = CascadeType.ALL)
     private List<Estatistica> estatisticas = new ArrayList<>();
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "POSICAO")
-    private Posicao posicao;
+    */
 
-    @Enumerated(EnumType.STRING)
+    //@Enumerated(EnumType.STRING)
+    @Column(name = "POSICAO")
+    private String posicao;
+
+    //@Enumerated(EnumType.STRING)
     @Column(name = "PERNA_DOMINANTE")
-    private PernaDominante pernaDominante;
+    private String pernaDominante;
 
     
     @Column(name = "NACIONALIDADE")
@@ -48,18 +52,14 @@ public class Atletas {
     @Column(name = "NUMERO_CAMISA")
     private int numeroCamisa;
 
-    // Construtor
-    public Atletas() {
+    
 
-    }
-
-    public Atletas(String nome, String dataNasc, String clubeAtual, Agenciador agenciador,
-                   List<Estatistica> estatisticas, Posicao posicao, PernaDominante pernaDominante, String nacionalidade, int numeroCamisa) {
+    public Atletas(String nome, String dataNasc, String clubeAtual, String posicao, String pernaDominante, String nacionalidade, int numeroCamisa) {
         this.nome = nome;
         this.dataNasc = dataNasc;
         this.clubeAtual = clubeAtual;
-        this.agenciador = agenciador;
-        this.estatisticas = estatisticas;
+        //this.agenciador = agenciador;
+        //this.estatisticas = estatisticas;
         this.posicao = posicao;
         this.pernaDominante = pernaDominante;
         this.nacionalidade = nacionalidade;
@@ -109,7 +109,7 @@ public class Atletas {
     public void setAlturaCm(int alturaCm) {
         this.alturaCm = alturaCm;
     }
-
+    /* 
     public Agenciador getAgenciador() {
         return agenciador;
     }
@@ -125,7 +125,7 @@ public class Atletas {
     public void setEstatisticas(List<Estatistica> estatisticas) {
         this.estatisticas = estatisticas;
     }
-
+     
     public Posicao getPosicao() {
         return posicao;
     }
@@ -141,6 +141,7 @@ public class Atletas {
     public void setPernaDominante(PernaDominante pernaDominante) {
         this.pernaDominante = pernaDominante;
     }
+        */
 
     public String getNacionalidade() {
         return nacionalidade;
@@ -158,5 +159,22 @@ public class Atletas {
         this.numeroCamisa = numeroCamisa;
     }
 
+    public String getPosicao() {
+        return posicao;
+    }
+
+    public void setPosicao(String posicao) {
+        this.posicao = posicao;
+    }
+
+    public String getPernaDominante() {
+        return pernaDominante;
+    }
+
+    public void setPernaDominante(String pernaDominante) {
+        this.pernaDominante = pernaDominante;
+    }
+
+    
     
 }

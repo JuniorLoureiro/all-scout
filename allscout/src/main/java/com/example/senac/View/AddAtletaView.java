@@ -7,336 +7,253 @@ import java.awt.event.ActionListener;
 
 public class AddAtletaView extends JPanel{
 
-    private javax.swing.JPanel panelView;
-    private javax.swing.JButton botaoAddAgenciador;
-    private javax.swing.JButton botaoAddEstatistica;
-    private javax.swing.JComboBox<String> comboBoxPernaD;
-    private javax.swing.JComboBox<String> comboBoxPosicao;
-    private javax.swing.JComboBox<String> comboBoxAgenciador;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelAgenciador;
-    private javax.swing.JLabel labelAltura;
-    private javax.swing.JLabel labelClubeAtual;
-    private javax.swing.JLabel labelClubeFormador;
-    private javax.swing.JLabel labelDataNasc;
-    private javax.swing.JLabel labelEstatistica;
-    private javax.swing.JLabel labelFotoPerfil;
-    private javax.swing.JLabel labelNomeAtl;
-    private javax.swing.JLabel labelPernaD;
-    private javax.swing.JLabel labelPeso;
-    private javax.swing.JLabel labelPosicao;
-    private javax.swing.JTextArea textAreaEstatistica;
-    private javax.swing.JTextField textFieldAltura;
-    private javax.swing.JTextField textFieldClubeAtual;
-    private javax.swing.JTextField textFieldClubeFormador;
-    private javax.swing.JTextField textFieldDataNasc;
-    private javax.swing.JTextField textFieldNomeAtl;
-    private javax.swing.JTextField textFieldPeso;
+    
+
+
+    private javax.swing.JButton jButtonAdicionaAtleta;
+    private javax.swing.JButton jButtonLimpaAddAtleta;
+    private javax.swing.JLabel jLabelAlturaAddAtleta;
+    private javax.swing.JLabel jLabelClubeAddAtleta;
+    private javax.swing.JLabel jLabelFotoAddAtleta;
+    private javax.swing.JLabel jLabelNacionalidadeAddAtleta;
+    private javax.swing.JLabel jLabelNomeAddAtleta;
+    private javax.swing.JLabel jLabelNumeroCamisaAddAtleta;
+    private javax.swing.JLabel jLabelPernaDominanteAddAtleta;
+    private javax.swing.JLabel jLabelPosicaoAddAtleta;
+    private javax.swing.JLabel jLabelTituloAddAtleta;
+    private javax.swing.JPanel jPanelAddAtleta;
+    private javax.swing.JTextField jTextFieldAlturaAddAtleta;
+    private javax.swing.JTextField jTextFieldClubeAddAtleta;
+    private javax.swing.JTextField jTextFieldNacionalidadeAddAtleta;
+    private javax.swing.JTextField jTextFieldNomeAddAtleta;
+    private javax.swing.JTextField jTextFieldNumeroCamisaAddAtleta;
+    private javax.swing.JTextField jTextFieldPernaDominanteAddAtleta;
+    private javax.swing.JTextField jTextFieldPosicaoAddAtleta;
 
     public AddAtletaView() {
         initComponents();
     }
     private void initComponents() {
 
-        panelView = new javax.swing.JPanel();
-        textFieldNomeAtl = new javax.swing.JTextField();
-        labelFotoPerfil = new javax.swing.JLabel();
-        labelNomeAtl = new javax.swing.JLabel();
-        labelAgenciador = new javax.swing.JLabel();
-        textFieldDataNasc = new javax.swing.JTextField();
-        textFieldClubeFormador = new javax.swing.JTextField();
-        labelDataNasc = new javax.swing.JLabel();
-        labelClubeFormador = new javax.swing.JLabel();
-        botaoAddEstatistica = new javax.swing.JButton();
-        labelEstatistica = new javax.swing.JLabel();
-        labelClubeAtual = new javax.swing.JLabel();
-        textFieldClubeAtual = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textAreaEstatistica = new javax.swing.JTextArea();
-        botaoAddAgenciador = new javax.swing.JButton();
-        labelAltura = new javax.swing.JLabel();
-        textFieldAltura = new javax.swing.JTextField();
-        textFieldPeso = new javax.swing.JTextField();
-        labelPeso = new javax.swing.JLabel();
-        labelPosicao = new javax.swing.JLabel();
-        comboBoxPosicao = new javax.swing.JComboBox<>();
-        labelPernaD = new javax.swing.JLabel();
-        comboBoxPernaD = new javax.swing.JComboBox<>();
-        comboBoxAgenciador = new javax.swing.JComboBox<>();
+        jPanelAddAtleta = new javax.swing.JPanel();
+        jLabelTituloAddAtleta = new javax.swing.JLabel();
+        jTextFieldClubeAddAtleta = new javax.swing.JTextField();
+        jTextFieldPosicaoAddAtleta = new javax.swing.JTextField();
+        jLabelClubeAddAtleta = new javax.swing.JLabel();
+        jLabelNomeAddAtleta = new javax.swing.JLabel();
+        jTextFieldNomeAddAtleta = new javax.swing.JTextField();
+        jLabelPosicaoAddAtleta = new javax.swing.JLabel();
+        jTextFieldNacionalidadeAddAtleta = new javax.swing.JTextField();
+        jLabelNacionalidadeAddAtleta = new javax.swing.JLabel();
+        jTextFieldNumeroCamisaAddAtleta = new javax.swing.JTextField();
+        jTextFieldAlturaAddAtleta = new javax.swing.JTextField();
+        jTextFieldPernaDominanteAddAtleta = new javax.swing.JTextField();
+        jLabelPernaDominanteAddAtleta = new javax.swing.JLabel();
+        jLabelAlturaAddAtleta = new javax.swing.JLabel();
+        jLabelNumeroCamisaAddAtleta = new javax.swing.JLabel();
+        jLabelFotoAddAtleta = new javax.swing.JLabel();
+        jButtonLimpaAddAtleta = new javax.swing.JButton();
+        jButtonAdicionaAtleta = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(2, 31, 57));
-        setForeground(new java.awt.Color(0, 0, 0));
-        setPreferredSize(new java.awt.Dimension(800, 600));
-        setVerifyInputWhenFocusTarget(false);
 
-        panelView.setBackground(new java.awt.Color(2, 31, 57));
-        panelView.setForeground(new java.awt.Color(2, 31, 57));
-        panelView.setPreferredSize(new java.awt.Dimension(800, 600));
+        jPanelAddAtleta.setBackground(new java.awt.Color(2, 31, 57));
 
-        textFieldNomeAtl.setBackground(new java.awt.Color(2, 31, 57));
-        textFieldNomeAtl.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        textFieldNomeAtl.setForeground(new java.awt.Color(255, 255, 255));
-        textFieldNomeAtl.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textFieldNomeAtl.setToolTipText("");
-        textFieldNomeAtl.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 3, true));
+        jLabelTituloAddAtleta.setFont(new java.awt.Font("Segoe UI Black", 1, 48)); // NOI18N
+        jLabelTituloAddAtleta.setForeground(new java.awt.Color(0, 110, 255));
+        jLabelTituloAddAtleta.setText("ADICIONAR ATLETA");
 
-        labelFotoPerfil.setIcon(new javax.swing.ImageIcon("C:\\Users\\Junior\\Downloads\\fotoPefil.jpg")); // NOI18N
-        labelFotoPerfil.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 3, true));
+        jTextFieldClubeAddAtleta.setBackground(new java.awt.Color(2, 23, 43));
+        jTextFieldClubeAddAtleta.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jTextFieldClubeAddAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        jTextFieldClubeAddAtleta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255), 2));
 
-        labelNomeAtl.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        labelNomeAtl.setForeground(new java.awt.Color(255, 255, 255));
-        labelNomeAtl.setText("NOME COMPLETO");
+        jTextFieldPosicaoAddAtleta.setBackground(new java.awt.Color(2, 23, 43));
+        jTextFieldPosicaoAddAtleta.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jTextFieldPosicaoAddAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        jTextFieldPosicaoAddAtleta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255), 2));
 
-        labelAgenciador.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        labelAgenciador.setForeground(new java.awt.Color(255, 255, 255));
-        labelAgenciador.setText("AGENCIADOR");
+        jLabelClubeAddAtleta.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabelClubeAddAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelClubeAddAtleta.setText("CLUBE ATUAL");
 
-        textFieldDataNasc.setBackground(new java.awt.Color(2, 31, 57));
-        textFieldDataNasc.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        textFieldDataNasc.setForeground(new java.awt.Color(255, 255, 255));
-        textFieldDataNasc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textFieldDataNasc.setToolTipText("");
-        textFieldDataNasc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 3, true));
+        jLabelNomeAddAtleta.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabelNomeAddAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelNomeAddAtleta.setText("NOME");
 
-        textFieldClubeFormador.setBackground(new java.awt.Color(2, 31, 57));
-        textFieldClubeFormador.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        textFieldClubeFormador.setForeground(new java.awt.Color(255, 255, 255));
-        textFieldClubeFormador.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textFieldClubeFormador.setToolTipText("");
-        textFieldClubeFormador.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 3, true));
+        jTextFieldNomeAddAtleta.setBackground(new java.awt.Color(2, 23, 43));
+        jTextFieldNomeAddAtleta.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jTextFieldNomeAddAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        jTextFieldNomeAddAtleta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255), 2));
 
-        labelDataNasc.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        labelDataNasc.setForeground(new java.awt.Color(255, 255, 255));
-        labelDataNasc.setText("DATA DE NASCIMENTO");
+        jLabelPosicaoAddAtleta.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabelPosicaoAddAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelPosicaoAddAtleta.setText("POSIÇÃO");
 
-        labelClubeFormador.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        labelClubeFormador.setForeground(new java.awt.Color(255, 255, 255));
-        labelClubeFormador.setText("CLUBE FORMADOR");
+        jTextFieldNacionalidadeAddAtleta.setBackground(new java.awt.Color(2, 23, 43));
+        jTextFieldNacionalidadeAddAtleta.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jTextFieldNacionalidadeAddAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        jTextFieldNacionalidadeAddAtleta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255), 2));
 
-        botaoAddEstatistica.setBackground(new java.awt.Color(0, 110, 255));
-        botaoAddEstatistica.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
-        botaoAddEstatistica.setForeground(new java.awt.Color(255, 255, 255));
-        botaoAddEstatistica.setText("+");
-        botaoAddEstatistica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoAddEstatisticaActionPerformed(evt);
-            }
-        });
+        jLabelNacionalidadeAddAtleta.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabelNacionalidadeAddAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelNacionalidadeAddAtleta.setText("NACIONALIDADE");
 
-        labelEstatistica.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        labelEstatistica.setForeground(new java.awt.Color(255, 255, 255));
-        labelEstatistica.setText("ESTATÍSTICAS");
+        jTextFieldNumeroCamisaAddAtleta.setBackground(new java.awt.Color(2, 23, 43));
+        jTextFieldNumeroCamisaAddAtleta.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jTextFieldNumeroCamisaAddAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        jTextFieldNumeroCamisaAddAtleta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255), 2));
 
-        labelClubeAtual.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        labelClubeAtual.setForeground(new java.awt.Color(255, 255, 255));
-        labelClubeAtual.setText("CLUBE ATUAL");
+        jTextFieldAlturaAddAtleta.setBackground(new java.awt.Color(2, 23, 43));
+        jTextFieldAlturaAddAtleta.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jTextFieldAlturaAddAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        jTextFieldAlturaAddAtleta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255), 2));
 
-        textFieldClubeAtual.setBackground(new java.awt.Color(2, 31, 57));
-        textFieldClubeAtual.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        textFieldClubeAtual.setForeground(new java.awt.Color(255, 255, 255));
-        textFieldClubeAtual.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textFieldClubeAtual.setToolTipText("");
-        textFieldClubeAtual.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 3, true));
+        jTextFieldPernaDominanteAddAtleta.setBackground(new java.awt.Color(2, 23, 43));
+        jTextFieldPernaDominanteAddAtleta.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jTextFieldPernaDominanteAddAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        jTextFieldPernaDominanteAddAtleta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255), 2));
 
-        textAreaEstatistica.setBackground(new java.awt.Color(2, 31, 57));
-        textAreaEstatistica.setColumns(20);
-        textAreaEstatistica.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        textAreaEstatistica.setForeground(new java.awt.Color(255, 255, 255));
-        textAreaEstatistica.setRows(5);
-        textAreaEstatistica.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 3, true));
-        jScrollPane1.setViewportView(textAreaEstatistica);
+        jLabelPernaDominanteAddAtleta.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabelPernaDominanteAddAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelPernaDominanteAddAtleta.setText("PERNA DOMINANTE");
 
-        botaoAddAgenciador.setBackground(new java.awt.Color(0, 110, 255));
-        botaoAddAgenciador.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
-        botaoAddAgenciador.setForeground(new java.awt.Color(255, 255, 255));
-        botaoAddAgenciador.setText("+");
-        botaoAddAgenciador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoAddAgenciadorActionPerformed(evt);
-            }
-        });
+        jLabelAlturaAddAtleta.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabelAlturaAddAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelAlturaAddAtleta.setText("ALTURA");
 
-        labelAltura.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        labelAltura.setForeground(new java.awt.Color(255, 255, 255));
-        labelAltura.setText("ALTURA (CM)");
+        jLabelNumeroCamisaAddAtleta.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabelNumeroCamisaAddAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelNumeroCamisaAddAtleta.setText("NÚMERO");
 
-        textFieldAltura.setBackground(new java.awt.Color(2, 31, 57));
-        textFieldAltura.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        textFieldAltura.setForeground(new java.awt.Color(255, 255, 255));
-        textFieldAltura.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textFieldAltura.setToolTipText("");
-        textFieldAltura.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 3, true));
+        jLabelFotoAddAtleta.setBackground(new java.awt.Color(2, 31, 57));
+        jLabelFotoAddAtleta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelFotoAddAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelFotoAddAtleta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelFotoAddAtleta.setText("FOTO ATLETA");
+        jLabelFotoAddAtleta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 2, true));
 
-        textFieldPeso.setBackground(new java.awt.Color(2, 31, 57));
-        textFieldPeso.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        textFieldPeso.setForeground(new java.awt.Color(255, 255, 255));
-        textFieldPeso.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textFieldPeso.setToolTipText("");
-        textFieldPeso.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 3, true));
+        jButtonLimpaAddAtleta.setBackground(new java.awt.Color(0, 110, 255));
+        jButtonLimpaAddAtleta.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jButtonLimpaAddAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonLimpaAddAtleta.setText("LIMPAR");
 
-        labelPeso.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        labelPeso.setForeground(new java.awt.Color(255, 255, 255));
-        labelPeso.setText("PESO (KG)");
+        jButtonAdicionaAtleta.setBackground(new java.awt.Color(0, 110, 255));
+        jButtonAdicionaAtleta.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jButtonAdicionaAtleta.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonAdicionaAtleta.setText("ADICIONAR ");
 
-        labelPosicao.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        labelPosicao.setForeground(new java.awt.Color(255, 255, 255));
-        labelPosicao.setText("POSIÇÃO");
-
-        comboBoxPosicao.setBackground(new java.awt.Color(2, 31, 57));
-        comboBoxPosicao.setForeground(new java.awt.Color(255, 255, 255));
-        comboBoxPosicao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 3, true));
-
-        labelPernaD.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        labelPernaD.setForeground(new java.awt.Color(255, 255, 255));
-        labelPernaD.setText("PERNA DOMINANTE");
-
-        comboBoxPernaD.setBackground(new java.awt.Color(2, 31, 57));
-        comboBoxPernaD.setForeground(new java.awt.Color(255, 255, 255));
-        comboBoxPernaD.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 3, true));
-
-        comboBoxAgenciador.setBackground(new java.awt.Color(2, 31, 57));
-        comboBoxAgenciador.setForeground(new java.awt.Color(255, 255, 255));
-        comboBoxAgenciador.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 3, true));
-
-        javax.swing.GroupLayout panelViewLayout = new javax.swing.GroupLayout(panelView);
-        panelView.setLayout(panelViewLayout);
-        panelViewLayout.setHorizontalGroup(
-            panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelViewLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelViewLayout.createSequentialGroup()
-                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelViewLayout.createSequentialGroup()
-                                .addComponent(labelFotoPerfil)
-                                .addGap(18, 18, 18)
-                                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(panelViewLayout.createSequentialGroup()
-                                        .addComponent(labelNomeAtl)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(labelDataNasc))
-                                    .addGroup(panelViewLayout.createSequentialGroup()
-                                        .addComponent(textFieldNomeAtl, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(textFieldDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panelViewLayout.createSequentialGroup()
-                                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(textFieldClubeFormador, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(labelClubeFormador))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labelClubeAtual)
-                                            .addComponent(textFieldClubeAtual)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelViewLayout.createSequentialGroup()
-                                        .addGap(108, 108, 108)
-                                        .addComponent(botaoAddEstatistica, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(panelViewLayout.createSequentialGroup()
-                                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelViewLayout.createSequentialGroup()
-                                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(panelViewLayout.createSequentialGroup()
-                                                .addComponent(comboBoxPernaD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(textFieldPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelViewLayout.createSequentialGroup()
-                                                .addComponent(botaoAddAgenciador, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(comboBoxAgenciador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                        .addGap(79, 79, 79))
-                                    .addGroup(panelViewLayout.createSequentialGroup()
-                                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labelAgenciador)
-                                            .addGroup(panelViewLayout.createSequentialGroup()
-                                                .addComponent(labelPernaD)
-                                                .addGap(124, 124, 124)
-                                                .addComponent(labelPeso)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(55, 55, 55))
-                    .addGroup(panelViewLayout.createSequentialGroup()
-                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboBoxPosicao, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelPosicao))
+        javax.swing.GroupLayout jPanelAddAtletaLayout = new javax.swing.GroupLayout(jPanelAddAtleta);
+        jPanelAddAtleta.setLayout(jPanelAddAtletaLayout);
+        jPanelAddAtletaLayout.setHorizontalGroup(
+            jPanelAddAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAddAtletaLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanelAddAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAddAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelAddAtletaLayout.createSequentialGroup()
+                            .addGroup(jPanelAddAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldNomeAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabelNomeAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanelAddAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelPosicaoAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldPosicaoAddAtleta)))
+                        .addGroup(jPanelAddAtletaLayout.createSequentialGroup()
+                            .addGroup(jPanelAddAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelClubeAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldClubeAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanelAddAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelNacionalidadeAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldNacionalidadeAddAtleta)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddAtletaLayout.createSequentialGroup()
+                            .addGroup(jPanelAddAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldNumeroCamisaAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabelNumeroCamisaAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanelAddAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldPernaDominanteAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabelPernaDominanteAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(20, 20, 20)
+                            .addGroup(jPanelAddAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelAlturaAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldAlturaAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanelAddAtletaLayout.createSequentialGroup()
+                            .addComponent(jLabelTituloAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelFotoAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanelAddAtletaLayout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addComponent(jButtonLimpaAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelViewLayout.createSequentialGroup()
-                                .addComponent(textFieldAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(panelViewLayout.createSequentialGroup()
-                                .addComponent(labelAltura)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(labelEstatistica)
-                                .addGap(141, 141, 141))))))
+                        .addComponent(jButtonAdicionaAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(38, 38, 38))
         );
-        panelViewLayout.setVerticalGroup(
-            panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelViewLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelViewLayout.createSequentialGroup()
-                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelNomeAtl)
-                            .addComponent(labelDataNasc))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(textFieldNomeAtl, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textFieldDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelClubeFormador)
-                            .addComponent(labelClubeAtual))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(textFieldClubeFormador, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textFieldClubeAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(labelFotoPerfil))
-                .addGap(18, 18, 18)
-                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelPosicao)
-                    .addComponent(labelEstatistica)
-                    .addComponent(labelAltura))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboBoxPosicao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoAddEstatistica, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFieldAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelViewLayout.createSequentialGroup()
-                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelPernaD)
-                            .addComponent(labelPeso))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(comboBoxPernaD, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textFieldPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+        jPanelAddAtletaLayout.setVerticalGroup(
+            jPanelAddAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAddAtletaLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(jPanelAddAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelFotoAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTituloAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
+                .addGroup(jPanelAddAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelAddAtletaLayout.createSequentialGroup()
+                        .addGroup(jPanelAddAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanelAddAtletaLayout.createSequentialGroup()
+                                .addComponent(jLabelNomeAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldNomeAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelAddAtletaLayout.createSequentialGroup()
+                                .addComponent(jLabelPosicaoAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldPosicaoAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(labelAgenciador)
+                        .addComponent(jLabelClubeAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botaoAddAgenciador, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboBoxAgenciador, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(167, 167, 167))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addComponent(jTextFieldClubeAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelAddAtletaLayout.createSequentialGroup()
+                        .addComponent(jLabelNacionalidadeAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldNacionalidadeAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelAddAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelPernaDominanteAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelAlturaAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelNumeroCamisaAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelAddAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldNumeroCamisaAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldPernaDominanteAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldAlturaAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addGroup(jPanelAddAtletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonLimpaAddAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAdicionaAtleta, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelAddAtleta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelAddAtleta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-    }
+    }// </editor-fold>    
+    
+    /* 
     private void botaoAddAgenciadorActionPerformed(java.awt.event.ActionEvent evt) {
 
     }                                                  
 
     private void botaoAddEstatisticaActionPerformed(java.awt.event.ActionEvent evt) {
 
-    }
+ 
+       }*/
 }
