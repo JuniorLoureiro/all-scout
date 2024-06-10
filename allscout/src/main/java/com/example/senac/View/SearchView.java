@@ -1,7 +1,7 @@
 package com.example.senac.View;
 
 import com.example.senac.Model.Atletas;
-import com.example.senac.Model.AtletasDAO;
+import com.example.senac.Controller.AtletasController;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
@@ -15,10 +15,10 @@ public class SearchView extends JPanel {
     private javax.swing.JPanel panelView;
     private javax.swing.JTextField textFieldPesquisa;
 
-    private AtletasDAO atletasDAO;
+    private AtletasController atletasController;
 
-    public SearchView(AtletasDAO atletasDAO) {
-        this.atletasDAO = atletasDAO;
+    public SearchView(AtletasController atletasController) {
+        this.atletasController = atletasController;
         initComponents();
     }
 
@@ -34,12 +34,12 @@ public class SearchView extends JPanel {
 
         panelView.setBackground(new java.awt.Color(2, 31, 57));
 
-        labelPesquisa.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        labelPesquisa.setFont(new java.awt.Font("Segoe UI Black", 0, 20));
         labelPesquisa.setForeground(new java.awt.Color(255, 255, 255));
         labelPesquisa.setText("PESQUISA:");
 
         textFieldPesquisa.setBackground(new java.awt.Color(2, 23, 43));
-        textFieldPesquisa.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        textFieldPesquisa.setFont(new java.awt.Font("Segoe UI Black", 0, 18));
         textFieldPesquisa.setForeground(new java.awt.Color(255, 255, 255));
         textFieldPesquisa.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 3, true));
         textFieldPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -98,7 +98,7 @@ public class SearchView extends JPanel {
 
     private void textFieldPesquisaKeyReleased(java.awt.event.KeyEvent evt) {
         String nomePesquisado = textFieldPesquisa.getText();
-        List<Atletas> atletasEncontrados = atletasDAO.buscarAtletasPorNome(nomePesquisado);
+        List<Atletas> atletasEncontrados = atletasController.buscarAtletasPorNome(nomePesquisado);
         atualizarListaAtletas(atletasEncontrados);
     }
 
@@ -111,13 +111,13 @@ public class SearchView extends JPanel {
     }
 
     private void listPesquisaMouseClicked(java.awt.event.MouseEvent evt) {
-        if (evt.getClickCount() == 2) { // Verifica se foi um clique duplo
+        if (evt.getClickCount() == 2) {
             String nomeSelecionado = listPesquisa.getSelectedValue();
             abrirDetalhesAtleta(nomeSelecionado);
         }
     }
 
     private void abrirDetalhesAtleta(String nomeAtleta) {
-        
+        // Implemente aqui a lógica para abrir os detalhes do atleta
     }
 }
