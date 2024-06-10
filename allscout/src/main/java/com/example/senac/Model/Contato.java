@@ -16,10 +16,13 @@ public class Contato {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name= "ID_CONTATO")
     private long id;
+
     @Column (name= "NOME")
     private String nomeContato;
+
     @Column (name= "TELEFONE")
     private String telefone;
+    
     @Column (name= "EMAIL")
     private String email;
 

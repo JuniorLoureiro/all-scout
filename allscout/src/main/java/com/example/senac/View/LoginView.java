@@ -1,22 +1,38 @@
 package com.example.senac.View;
 
+import com.example.senac.Controller.UsuarioController;
+import com.example.senac.Controller.ModeradorController;
+import com.example.senac.Model.Usuario;
+import com.example.senac.Model.Moderador;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 public class LoginView extends javax.swing.JPanel {
+    private javax.swing.JButton botaoCadastrar;
+    private javax.swing.JButton botaoLogin;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelNaoTenhoConta;
+    private javax.swing.JLabel labelSenha;
+    private javax.swing.JLabel labelUsername;
+    private javax.swing.JLabel logoAllScout;
+    private javax.swing.JPasswordField textFieldSenha;
+    private javax.swing.JTextField textFieldUsername;
+    private UsuarioController usuarioController;
+    private ModeradorController moderadorController;
 
-   
     public LoginView() {
         initComponents();
+        usuarioController = new UsuarioController();
+        moderadorController = new ModeradorController();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
-
         jPanel1 = new javax.swing.JPanel();
         labelSenha = new javax.swing.JLabel();
         logoAllScout = new javax.swing.JLabel();
@@ -35,13 +51,13 @@ public class LoginView extends javax.swing.JPanel {
         labelSenha.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelSenha.setForeground(new java.awt.Color(0, 110, 255));
         labelSenha.setText("SENHA");
-        
+
         logoAllScout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/example/senac/View/Login.png")));
 
         textFieldSenha.setBackground(new java.awt.Color(0, 0, 0));
         textFieldSenha.setForeground(new java.awt.Color(0, 110, 255));
         textFieldSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
-        textFieldSenha.setFont(new java.awt.Font("Segoe UI Black", 0, 18));
+        textFieldSenha.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
 
         labelUsername.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelUsername.setForeground(new java.awt.Color(0, 110, 255));
@@ -50,7 +66,7 @@ public class LoginView extends javax.swing.JPanel {
         textFieldUsername.setBackground(new java.awt.Color(0, 0, 0));
         textFieldUsername.setForeground(new java.awt.Color(0, 110, 255));
         textFieldUsername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
-        textFieldUsername.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // Definindo fonte e tamanho
+        textFieldUsername.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
 
         botaoLogin.setBackground(new java.awt.Color(0, 110, 255));
         botaoLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
@@ -61,16 +77,25 @@ public class LoginView extends javax.swing.JPanel {
             public void actionPerformed(ActionEvent e) {
                 String username = textFieldUsername.getText();
                 String password = new String(textFieldSenha.getPassword());
-                if (username.equals("Roppa") && password.equals("123")) {
-                    showAdmMainView();
-                } else {
-                    showMainView();
+                
+                try {
+                    Moderador moderador = moderadorController.login(username, password);
+                    Usuario usuario = usuarioController.login(username, password);
+        
+                    if (moderador != null) {
+                        showAdmMainView(moderador);
+                    } else if (usuario != null) {
+                        showMainView(usuario);
+                    } else {
+                        JOptionPane.showMessageDialog(LoginView.this, "Credenciais inválidas.", "Erro de Login", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(LoginView.this, "Ocorreu um erro durante o login.", "Erro", JOptionPane.ERROR_MESSAGE);
+                    ex.printStackTrace(); // Isso é apenas para depuração. Considere lidar com isso de forma mais apropriada em um ambiente de produção.
                 }
             }
         });
-
-       
-
+        
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,7 +141,6 @@ public class LoginView extends javax.swing.JPanel {
         botaoCadastrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Oculta o painel de login, o rótulo "NÃO TENHO CONTA" e o botão "CADASTRAR"
                 showCadastroUserView();
             }
         });
@@ -153,51 +177,25 @@ public class LoginView extends javax.swing.JPanel {
         );
     }// </editor-fold> 
     
-    private void showMainView() {
-        // Obtenha a referência ao JFrame principal
+    private void showMainView(Usuario usuario) {
         JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-        // Crie uma instância da MainView
-        MainView mainView = new MainView();
-        // Substitua o painel atual pelo painel da MainView
+        MainView mainView = new MainView(usuario);
         mainFrame.setContentPane(mainView);
         mainFrame.revalidate();
     }
 
-    private void showAdmMainView() {
+    private void showAdmMainView(Moderador moderador) {
         JFrame admMainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-        AdmMainView admMainView = new AdmMainView();
+        AdmMainView admMainView = new AdmMainView(moderador);
         admMainFrame.setContentPane(admMainView);
         admMainFrame.revalidate();
     }
 
     private void showCadastroUserView() {
-        // Obtém o frame pai do JPanel atual
         JFrame cadastroFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-    
-        // Cria uma nova instância de CadastroUserView
         CadastroUserView cadastroView = new CadastroUserView();
-    
-        // Define o conteúdo do frame como o CadastroUserView
         cadastroFrame.setContentPane(cadastroView);
-    
-        // Revalida e redesenha o frame
         cadastroFrame.revalidate();
         cadastroFrame.repaint();
-    }
-
-    
-
-   
-
-    // Variables declaration - do not modify                     
-    private javax.swing.JButton botaoCadastrar;
-    private javax.swing.JButton botaoLogin;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel labelNaoTenhoConta;
-    private javax.swing.JLabel labelSenha;
-    private javax.swing.JLabel labelUsername;
-    private javax.swing.JLabel logoAllScout;
-    private javax.swing.JPasswordField textFieldSenha;
-    private javax.swing.JTextField textFieldUsername;
-    // End of variables declaration                   
+    }                  
 }

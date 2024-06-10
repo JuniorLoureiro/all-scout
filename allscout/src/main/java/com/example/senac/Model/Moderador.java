@@ -9,21 +9,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name ="moderadores")
+@Table (name = "moderadores")
 public class Moderador extends Usuario {
 
-    
-    @Column(name= "ID_MODERADORES")
+    @Column(name = "ID_MODERADORES")
     private long id;
 
-    @Column(name= "PERMISSOES")
+    @Column(name = "PERMISSOES", nullable = false)
     private String permissoes;
 
-    @Column(name= "STATUS_ATIVIDADE")
+    @Column(name = "STATUS_ATIVIDADE", nullable = false)
     private boolean statusAtividade;
 
     public Moderador() {
-        super();
+
     }
 
     public Moderador(String nome, String senha, String nomeUsuario, String permissoes, boolean statusAtividade) {
