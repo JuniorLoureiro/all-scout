@@ -27,6 +27,7 @@ public class Usuario {
     @Column (name = "ID")
     private long id;
 
+    /* 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_ENDERECO", referencedColumnName = "ID_ENDERECO")
     private Endereco endereco;
@@ -34,6 +35,7 @@ public class Usuario {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_CONTATO", referencedColumnName = "ID_CONTATO")
     private Contato contato;
+    */
 
     @Column (name = "NOME", nullable = false)
     private String nome;
