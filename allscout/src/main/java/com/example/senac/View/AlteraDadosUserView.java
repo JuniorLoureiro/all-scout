@@ -4,229 +4,268 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import com.example.senac.Model.Usuario;
+import com.example.senac.Controller.UsuarioController;
 
 public class AlteraDadosUserView extends JPanel {
 
-    private javax.swing.JButton BotaoSalvar;
-    private javax.swing.JLabel LabelAlterarDados;
-    private javax.swing.JCheckBox NomeCompletoCheckBox;
-    private javax.swing.JTextField NomeCompletoTextField;
-    private javax.swing.JPanel PanelAlterarDados;
-    private javax.swing.JCheckBox SenhaCheckBox;
-    private javax.swing.JTextField SenhaTextField;
-    private javax.swing.JCheckBox UsernameCheckBox;
-    private javax.swing.JTextField UsernameTextField;
-    private javax.swing.JLabel jLabel1;
+    private JButton botaoSalvar;
+    private JLabel labelAlterarDados;
+    private JCheckBox nomeCompletoCheckBox;
+    private JTextField nomeCompletoTextField;
+    private JPanel panelAlterarDados;
+    private JCheckBox senhaCheckBox;
+    private JTextField senhaTextField;
+    private JCheckBox usernameCheckBox;
+    private JTextField usernameTextField;
+    private JLabel jLabel1;
 
-    public AlteraDadosUserView() {
+    private Usuario usuario; // Adicionado para armazenar o usuário atual
+    private UsuarioController controller;
+    private EntityManager entityManager;
+
+    public AlteraDadosUserView(Usuario usuario, UsuarioController controller, EntityManager entityManager) {
+        this.usuario = usuario;
+        this.controller = controller;
+        this.entityManager = entityManager;
         initComponents();
+        loadUserData();
     }
 
     private void initComponents() {
-
-        jLabel1 = new javax.swing.JLabel();
-        PanelAlterarDados = new javax.swing.JPanel();
-        LabelAlterarDados = new javax.swing.JLabel();
-        NomeCompletoCheckBox = new javax.swing.JCheckBox();
-        UsernameTextField = new javax.swing.JTextField();
-        SenhaTextField = new javax.swing.JTextField();
-        NomeCompletoTextField = new javax.swing.JTextField();
-        UsernameCheckBox = new javax.swing.JCheckBox();
-        SenhaCheckBox = new javax.swing.JCheckBox();
-        BotaoSalvar = new javax.swing.JButton();
+        jLabel1 = new JLabel();
+        panelAlterarDados = new JPanel();
+        labelAlterarDados = new JLabel();
+        nomeCompletoCheckBox = new JCheckBox();
+        usernameTextField = new JTextField();
+        senhaTextField = new JTextField();
+        nomeCompletoTextField = new JTextField();
+        usernameCheckBox = new JCheckBox();
+        senhaCheckBox = new JCheckBox();
+        botaoSalvar = new JButton();
 
         jLabel1.setText("jLabel1");
 
-        setBackground(new java.awt.Color(2, 31, 57));
-        setPreferredSize(new java.awt.Dimension(600, 600));
+        setBackground(new Color(2, 31, 57));
+        setPreferredSize(new Dimension(600, 600));
 
-        PanelAlterarDados.setBackground(new java.awt.Color(2, 31, 57));
+        panelAlterarDados.setBackground(new Color(2, 31, 57));
 
-        LabelAlterarDados.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
-        LabelAlterarDados.setForeground(new java.awt.Color(0, 110, 255));
-        LabelAlterarDados.setText("ALTERAR DADOS");
+        labelAlterarDados.setFont(new Font("Segoe UI Black", 0, 48)); // NOI18N
+        labelAlterarDados.setForeground(new Color(0, 110, 255));
+        labelAlterarDados.setText("ALTERAR DADOS");
 
-        NomeCompletoCheckBox.setBackground(new java.awt.Color(2, 31, 57));
-        NomeCompletoCheckBox.setForeground(new java.awt.Color(0, 110, 255));
-        NomeCompletoCheckBox.setAlignmentY(0.0F);
-        NomeCompletoCheckBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 1, true));
-        NomeCompletoCheckBox.setBorderPaintedFlat(true);
-        NomeCompletoCheckBox.setContentAreaFilled(false);
-        NomeCompletoCheckBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        NomeCompletoCheckBox.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        NomeCompletoCheckBox.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        NomeCompletoCheckBox.setMaximumSize(new java.awt.Dimension(30, 30));
-        NomeCompletoCheckBox.setMinimumSize(new java.awt.Dimension(30, 30));
-        NomeCompletoCheckBox.setPreferredSize(new java.awt.Dimension(30, 30));
-        NomeCompletoCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        nomeCompletoCheckBox.setBackground(new Color(2, 31, 57));
+        nomeCompletoCheckBox.setForeground(new Color(0, 110, 255));
+        nomeCompletoCheckBox.setAlignmentY(0.0F);
+        nomeCompletoCheckBox.setBorder(new javax.swing.border.LineBorder(new Color(0, 110, 255), 1, true));
+        nomeCompletoCheckBox.setBorderPaintedFlat(true);
+        nomeCompletoCheckBox.setContentAreaFilled(false);
+        nomeCompletoCheckBox.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        nomeCompletoCheckBox.setHorizontalAlignment(SwingConstants.CENTER);
+        nomeCompletoCheckBox.setHorizontalTextPosition(SwingConstants.CENTER);
+        nomeCompletoCheckBox.setMaximumSize(new Dimension(30, 30));
+        nomeCompletoCheckBox.setMinimumSize(new Dimension(30, 30));
+        nomeCompletoCheckBox.setPreferredSize(new Dimension(30, 30));
+        nomeCompletoCheckBox.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 NomeCompletoCheckBoxActionPerformed(evt);
             }
         });
 
-        UsernameTextField.setBackground(new java.awt.Color(2, 31, 57));
-        UsernameTextField.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        UsernameTextField.setForeground(new java.awt.Color(0, 110, 255));
-        UsernameTextField.setText("Username");
-        UsernameTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 1, true));
-        UsernameTextField.setEnabled(false); // Inicialmente desativado
-        UsernameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        usernameTextField.setBackground(new Color(2, 31, 57));
+        usernameTextField.setFont(new Font("Segoe UI Black", 0, 18)); // NOI18N
+        usernameTextField.setForeground(new Color(0, 110, 255));
+        usernameTextField.setBorder(new javax.swing.border.LineBorder(new Color(0, 110, 255), 1, true));
+        usernameTextField.setEnabled(false); // Inicialmente desativado
+        usernameTextField.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 UsernameTextFieldActionPerformed(evt);
             }
         });
 
-        SenhaTextField.setBackground(new java.awt.Color(2, 31, 57));
-        SenhaTextField.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        SenhaTextField.setForeground(new java.awt.Color(0, 110, 255));
-        SenhaTextField.setText("Senha");
-        SenhaTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 1, true));
-        SenhaTextField.setEnabled(false); // Inicialmente desativado
-        SenhaTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        senhaTextField.setBackground(new Color(2, 31, 57));
+        senhaTextField.setFont(new Font("Segoe UI Black", 0, 18)); // NOI18N
+        senhaTextField.setForeground(new Color(0, 110, 255));
+        senhaTextField.setBorder(new javax.swing.border.LineBorder(new Color(0, 110, 255), 1, true));
+        senhaTextField.setEnabled(false); // Inicialmente desativado
+        senhaTextField.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 SenhaTextFieldActionPerformed(evt);
             }
         });
 
-        NomeCompletoTextField.setBackground(new java.awt.Color(2, 31, 57));
-        NomeCompletoTextField.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        NomeCompletoTextField.setForeground(new java.awt.Color(0, 110, 255));
-        NomeCompletoTextField.setText("Nome Completo");
-        NomeCompletoTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 1, true));
-        NomeCompletoTextField.setEnabled(false); // Inicialmente desativado
-        NomeCompletoTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        nomeCompletoTextField.setBackground(new Color(2, 31, 57));
+        nomeCompletoTextField.setFont(new Font("Segoe UI Black", 0, 18)); // NOI18N
+        nomeCompletoTextField.setForeground(new Color(0, 110, 255));
+        nomeCompletoTextField.setBorder(new javax.swing.border.LineBorder(new Color(0, 110, 255), 1, true));
+        nomeCompletoTextField.setEnabled(false); // Inicialmente desativado
+        nomeCompletoTextField.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 NomeCompletoTextFieldActionPerformed(evt);
             }
         });
 
-        UsernameCheckBox.setBackground(new java.awt.Color(2, 31, 57));
-        UsernameCheckBox.setForeground(new java.awt.Color(0, 110, 255));
-        UsernameCheckBox.setAlignmentY(0.0F);
-        UsernameCheckBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 1, true));
-        UsernameCheckBox.setBorderPaintedFlat(true);
-        UsernameCheckBox.setContentAreaFilled(false);
-        UsernameCheckBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        UsernameCheckBox.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        UsernameCheckBox.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        UsernameCheckBox.setMaximumSize(new java.awt.Dimension(30, 30));
-        UsernameCheckBox.setMinimumSize(new java.awt.Dimension(30, 30));
-        UsernameCheckBox.setPreferredSize(new java.awt.Dimension(30, 30));
-        UsernameCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        usernameCheckBox.setBackground(new Color(2, 31, 57));
+        usernameCheckBox.setForeground(new Color(0, 110, 255));
+        usernameCheckBox.setAlignmentY(0.0F);
+        usernameCheckBox.setBorder(new javax.swing.border.LineBorder(new Color(0, 110, 255), 1, true));
+        usernameCheckBox.setBorderPaintedFlat(true);
+        usernameCheckBox.setContentAreaFilled(false);
+        usernameCheckBox.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        usernameCheckBox.setHorizontalAlignment(SwingConstants.CENTER);
+        usernameCheckBox.setHorizontalTextPosition(SwingConstants.CENTER);
+        usernameCheckBox.setMaximumSize(new Dimension(30, 30));
+        usernameCheckBox.setMinimumSize(new Dimension(30, 30));
+        usernameCheckBox.setPreferredSize(new Dimension(30, 30));
+        usernameCheckBox.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 UsernameCheckBoxActionPerformed(evt);
             }
         });
 
-        SenhaCheckBox.setBackground(new java.awt.Color(2, 31, 57));
-        SenhaCheckBox.setForeground(new java.awt.Color(0, 110, 255));
-        SenhaCheckBox.setAlignmentY(0.0F);
-        SenhaCheckBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 1, true));
-        SenhaCheckBox.setBorderPaintedFlat(true);
-        SenhaCheckBox.setContentAreaFilled(false);
-        SenhaCheckBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SenhaCheckBox.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        SenhaCheckBox.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        SenhaCheckBox.setMaximumSize(new java.awt.Dimension(30, 30));
-        SenhaCheckBox.setMinimumSize(new java.awt.Dimension(30, 30));
-        SenhaCheckBox.setPreferredSize(new java.awt.Dimension(30, 30));
-        SenhaCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        senhaCheckBox.setBackground(new Color(2, 31, 57));
+        senhaCheckBox.setForeground(new Color(0, 110, 255));
+        senhaCheckBox.setAlignmentY(0.0F);
+        senhaCheckBox.setBorder(new javax.swing.border.LineBorder(new Color(0, 110, 255), 1, true));
+        senhaCheckBox.setBorderPaintedFlat(true);
+        senhaCheckBox.setContentAreaFilled(false);
+        senhaCheckBox.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        senhaCheckBox.setHorizontalAlignment(SwingConstants.CENTER);
+        senhaCheckBox.setHorizontalTextPosition(SwingConstants.CENTER);
+        senhaCheckBox.setMaximumSize(new Dimension(30, 30));
+        senhaCheckBox.setMinimumSize(new Dimension(30, 30));
+        senhaCheckBox.setPreferredSize(new Dimension(30, 30));
+        senhaCheckBox.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 SenhaCheckBoxActionPerformed(evt);
             }
         });
 
-        BotaoSalvar.setBackground(new java.awt.Color(0, 110, 255));
-        BotaoSalvar.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        BotaoSalvar.setForeground(new java.awt.Color(2, 31, 57));
-        BotaoSalvar.setText("SALVAR");
-        BotaoSalvar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 1, true));
+        botaoSalvar.setBackground(new Color(0, 110, 255));
+        botaoSalvar.setFont(new Font("Segoe UI Black", 0, 18)); // NOI18N
+        botaoSalvar.setForeground(new Color(2, 31, 57));
+        botaoSalvar.setText("SALVAR");
+        botaoSalvar.setBorder(new javax.swing.border.LineBorder(new Color(0, 110, 255), 1, true));
+        botaoSalvar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                salvarAlteracoes();
+            }
+        });
 
-        javax.swing.GroupLayout PanelAlterarDadosLayout = new javax.swing.GroupLayout(PanelAlterarDados);
-        PanelAlterarDados.setLayout(PanelAlterarDadosLayout);
+        GroupLayout PanelAlterarDadosLayout = new GroupLayout(panelAlterarDados);
+        panelAlterarDados.setLayout(PanelAlterarDadosLayout);
         PanelAlterarDadosLayout.setHorizontalGroup(
-            PanelAlterarDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAlterarDadosLayout.createSequentialGroup()
+            PanelAlterarDadosLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(GroupLayout.Alignment.TRAILING, PanelAlterarDadosLayout.createSequentialGroup()
                     .addContainerGap(150, Short.MAX_VALUE)
-                    .addGroup(PanelAlterarDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(UsernameCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(NomeCompletoCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(SenhaCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(PanelAlterarDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(PanelAlterarDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BotaoSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PanelAlterarDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(NomeCompletoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(UsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(SenhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(PanelAlterarDadosLayout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(LabelAlterarDados)))
-                    .addGap(144, 144, 144))
+                    .addGroup(PanelAlterarDadosLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                        .addComponent(usernameCheckBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nomeCompletoCheckBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(senhaCheckBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(PanelAlterarDadosLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(PanelAlterarDadosLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                            .addComponent(botaoSalvar, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PanelAlterarDadosLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addComponent(nomeCompletoTextField, GroupLayout.PREFERRED_SIZE, 427, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(usernameTextField, GroupLayout.PREFERRED_SIZE, 427, GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(senhaTextField, GroupLayout.PREFERRED_SIZE, 427, GroupLayout.PREFERRED_SIZE))
+                    .addGap(54, 54, 54))
+                .addGroup(PanelAlterarDadosLayout.createSequentialGroup()
+                    .addGap(94, 94, 94)
+                    .addComponent(labelAlterarDados)
+                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelAlterarDadosLayout.setVerticalGroup(
-            PanelAlterarDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            PanelAlterarDadosLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                 .addGroup(PanelAlterarDadosLayout.createSequentialGroup()
-                    .addGap(101, 101, 101)
-                    .addGroup(PanelAlterarDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(PanelAlterarDadosLayout.createSequentialGroup()
-                            .addGap(95, 95, 95)
-                            .addComponent(NomeCompletoCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(UsernameCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(SenhaCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(PanelAlterarDadosLayout.createSequentialGroup()
-                            .addComponent(LabelAlterarDados, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(45, 45, 45)
-                            .addComponent(NomeCompletoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(UsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(SenhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(BotaoSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(163, Short.MAX_VALUE))
+                    .addGap(24, 24, 24)
+                    .addComponent(labelAlterarDados)
+                    .addGap(65, 65, 65)
+                    .addGroup(PanelAlterarDadosLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                        .addComponent(nomeCompletoTextField, GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                        .addComponent(nomeCompletoCheckBox, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGap(48, 48, 48)
+                    .addGroup(PanelAlterarDadosLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                        .addComponent(usernameTextField, GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                        .addComponent(usernameCheckBox, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGap(48, 48, 48)
+                    .addGroup(PanelAlterarDadosLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                        .addComponent(senhaTextField, GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                        .addComponent(senhaCheckBox, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGap(53, 53, 53)
+                    .addComponent(botaoSalvar, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(95, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(PanelAlterarDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(67, Short.MAX_VALUE))
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addComponent(panelAlterarDados, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(PanelAlterarDados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(panelAlterarDados, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE))
         );
     }
 
-    private void UsernameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    private void NomeCompletoCheckBoxActionPerformed(ActionEvent evt) {
+        nomeCompletoTextField.setEnabled(nomeCompletoCheckBox.isSelected());
     }
 
-    private void SenhaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    private void UsernameTextFieldActionPerformed(ActionEvent evt) {
     }
 
-    private void NomeCompletoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    private void SenhaTextFieldActionPerformed(ActionEvent evt) {
     }
 
-    private void NomeCompletoCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {
-        NomeCompletoTextField.setEnabled(NomeCompletoCheckBox.isSelected());
+    private void NomeCompletoTextFieldActionPerformed(ActionEvent evt) {
     }
 
-    private void UsernameCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {
-        UsernameTextField.setEnabled(UsernameCheckBox.isSelected());
+    private void UsernameCheckBoxActionPerformed(ActionEvent evt) {
+        usernameTextField.setEnabled(usernameCheckBox.isSelected());
     }
 
-    private void SenhaCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {
-        SenhaTextField.setEnabled(SenhaCheckBox.isSelected());
+    private void SenhaCheckBoxActionPerformed(ActionEvent evt) {
+        senhaTextField.setEnabled(senhaCheckBox.isSelected());
+    }
+
+    private void salvarAlteracoes() {
+        String novoNomeCompleto = nomeCompletoTextField.getText();
+        String novoUsername = usernameTextField.getText();
+        String novaSenha = senhaTextField.getText();
+
+        entityManager.getTransaction().begin();
+
+        if (nomeCompletoCheckBox.isSelected() && !novoNomeCompleto.isEmpty()) {
+            usuario.setNome(novoNomeCompleto);
+        }
+
+        if (usernameCheckBox.isSelected() && !novoUsername.isEmpty()) {
+            usuario.setNomeUsuario(novoUsername);
+        }
+
+        if (senhaCheckBox.isSelected() && !novaSenha.isEmpty()) {
+            usuario.setSenha(novaSenha);
+        }
+
+        entityManager.merge(usuario);
+        entityManager.getTransaction().commit();
+
+        JOptionPane.showMessageDialog(this, "Dados do usuário atualizados com sucesso.");
+    }
+
+    private void loadUserData() {
+        nomeCompletoTextField.setText(usuario.getNome());
+        usernameTextField.setText(usuario.getNomeUsuario());
+        senhaTextField.setText("*****************");
     }
 }
- 

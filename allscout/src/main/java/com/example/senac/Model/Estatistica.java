@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/* 
 @Entity
 @Table (name = "estatisticas")
 public class Estatistica {
@@ -75,3 +76,4 @@ public class Estatistica {
         this.id = id;
     }
 }
+*/

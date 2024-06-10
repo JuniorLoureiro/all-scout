@@ -1,7 +1,7 @@
 package com.example.senac.Controller;
 
-import com.example.senac.Model.Agenciador;
-
+//import com.example.senac.Model.Agenciador;
+/*
 public class AgenciadorController {
     private Agenciador agenciador;
 
@@ -13,3 +13,4 @@ public class AgenciadorController {
         return agenciador;
     }
 }
+*/

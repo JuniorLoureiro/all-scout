@@ -22,45 +22,48 @@ public class Atletas {
     @Column(name = "CLUBE_ATUAL")
     private String clubeAtual;
 
-    @Column(name = "CLUBE_FORMADOR")
-    private String clubeFormador;
-
-    @Column(name = "PESO")
-    private int peso;
-
     @Column(name = "ALTURA")
     private int alturaCm;
 
+    /* 
     @JoinColumn(name = "ID_AGENCIADOR")
     @OneToOne(cascade = {CascadeType.PERSIST})
     private Agenciador agenciador;
+    
 
     @OneToMany(mappedBy = "atleta", cascade = CascadeType.ALL)
     private List<Estatistica> estatisticas = new ArrayList<>();
 
-    @Enumerated(EnumType.STRING)
+    */
+
+    //@Enumerated(EnumType.STRING)
     @Column(name = "POSICAO")
-    private Posicao posicao;
+    private String posicao;
 
-    @Enumerated(EnumType.STRING)
+    //@Enumerated(EnumType.STRING)
     @Column(name = "PERNA_DOMINANTE")
-    private PernaDominante pernaDominante;
+    private String pernaDominante;
 
-    // Construtor
-    public Atletas() {
+    
+    @Column(name = "NACIONALIDADE")
+    private String nacionalidade;
 
-    }
+    
+    @Column(name = "NUMERO_CAMISA")
+    private int numeroCamisa;
 
-    public Atletas(String nome, String dataNasc, String clubeAtual, String clubeFormador, Agenciador agenciador,
-                   List<Estatistica> estatisticas, Posicao posicao, PernaDominante pernaDominante) {
+    
+
+    public Atletas(String nome, String dataNasc, String clubeAtual, String posicao, String pernaDominante, String nacionalidade, int numeroCamisa) {
         this.nome = nome;
         this.dataNasc = dataNasc;
         this.clubeAtual = clubeAtual;
-        this.clubeFormador = clubeFormador;
-        this.agenciador = agenciador;
-        this.estatisticas = estatisticas;
+        //this.agenciador = agenciador;
+        //this.estatisticas = estatisticas;
         this.posicao = posicao;
         this.pernaDominante = pernaDominante;
+        this.nacionalidade = nacionalidade;
+        this.numeroCamisa = numeroCamisa;
     }
 
     // Getters and Setters
@@ -96,21 +99,8 @@ public class Atletas {
         this.clubeAtual = clubeAtual;
     }
 
-    public String getClubeFormador() {
-        return clubeFormador;
-    }
 
-    public void setClubeFormador(String clubeFormador) {
-        this.clubeFormador = clubeFormador;
-    }
-
-    public int getPeso() {
-        return peso;
-    }
-
-    public void setPeso(int peso) {
-        this.peso = peso;
-    }
+    
 
     public int getAlturaCm() {
         return alturaCm;
@@ -119,7 +109,7 @@ public class Atletas {
     public void setAlturaCm(int alturaCm) {
         this.alturaCm = alturaCm;
     }
-
+    /* 
     public Agenciador getAgenciador() {
         return agenciador;
     }
@@ -135,7 +125,7 @@ public class Atletas {
     public void setEstatisticas(List<Estatistica> estatisticas) {
         this.estatisticas = estatisticas;
     }
-
+     
     public Posicao getPosicao() {
         return posicao;
     }
@@ -151,4 +141,40 @@ public class Atletas {
     public void setPernaDominante(PernaDominante pernaDominante) {
         this.pernaDominante = pernaDominante;
     }
+        */
+
+    public String getNacionalidade() {
+        return nacionalidade;
+    }
+
+    public void setNacionalidade(String nacionalidade) {
+        this.nacionalidade = nacionalidade;
+    }
+
+    public int getNumeroCamisa() {
+        return numeroCamisa;
+    }
+
+    public void setNumeroCamisa(int numeroCamisa) {
+        this.numeroCamisa = numeroCamisa;
+    }
+
+    public String getPosicao() {
+        return posicao;
+    }
+
+    public void setPosicao(String posicao) {
+        this.posicao = posicao;
+    }
+
+    public String getPernaDominante() {
+        return pernaDominante;
+    }
+
+    public void setPernaDominante(String pernaDominante) {
+        this.pernaDominante = pernaDominante;
+    }
+
+    
+    
 }

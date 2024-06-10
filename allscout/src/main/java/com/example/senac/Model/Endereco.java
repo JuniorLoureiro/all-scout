@@ -33,7 +33,7 @@ public class Endereco {
     @Column (name= "NUMERO")
     private String numero;
 
-    @Column (name= "COMPLETO")
+    @Column (name= "COMPLEMENTO")
     private String complemento;
 
     public Endereco() {

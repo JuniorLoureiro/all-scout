@@ -2,20 +2,19 @@ package com.example.senac.Model;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+/* 
 
 public enum Posicao {
     @Enumerated(EnumType.STRING)
     GOLEIRO,
     @Enumerated(EnumType.STRING)
-    LATERAL,
+    DEFENSOR,
     @Enumerated(EnumType.STRING)
-    ZAGUEIRO,
-    @Enumerated(EnumType.STRING)
-    VOLANTE,
-    @Enumerated(EnumType.STRING)
-    MEIA,
-    @Enumerated(EnumType.STRING)
-    PONTA,
+    MEIO_CAMPO,
     @Enumerated(EnumType.STRING)
     ATACANTE,
+    @Enumerated(EnumType.STRING)
+    CENTROAVANTE,
+    
 }
+    */
