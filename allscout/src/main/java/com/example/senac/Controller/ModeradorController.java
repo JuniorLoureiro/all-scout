@@ -25,7 +25,9 @@ public class ModeradorController {
 
     public void criarModerador(String nome, String senha, String nomeUsuario,String permissoes, boolean statusAtividade) {
         moderador = new Moderador (nome, senha,nomeUsuario,permissoes,statusAtividade );
-        // FUTURA implementação para gravar em um banco de dados ou realizar outras operações necessárias.
+        entityManager.getTransaction().begin();
+        entityManager.persist(moderador);
+        entityManager.getTransaction().commit();
     }
 
     public Moderador getModerador() {

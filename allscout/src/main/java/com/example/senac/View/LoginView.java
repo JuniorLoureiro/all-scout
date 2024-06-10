@@ -79,13 +79,13 @@ public class LoginView extends javax.swing.JPanel {
                 String password = new String(textFieldSenha.getPassword());
                 
                 try {
-                    Usuario usuario = usuarioController.login(username, password);
                     Moderador moderador = moderadorController.login(username, password);
+                    Usuario usuario = usuarioController.login(username, password);
         
-                    if (usuario != null) {
-                        showMainView(usuario);
-                    } else if (moderador != null) {
+                    if (moderador != null) {
                         showAdmMainView(moderador);
+                    } else if (usuario != null) {
+                        showMainView(usuario);
                     } else {
                         JOptionPane.showMessageDialog(LoginView.this, "Credenciais inválidas.", "Erro de Login", JOptionPane.ERROR_MESSAGE);
                     }
