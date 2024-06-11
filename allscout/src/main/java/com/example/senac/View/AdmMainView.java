@@ -1,7 +1,11 @@
 package com.example.senac.View;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.*;
 
+import com.example.senac.Controller.UsuarioController;
 import com.example.senac.Model.Moderador;
 
 import java.awt.*;
@@ -173,8 +177,12 @@ public class AdmMainView extends JPanel {
     }
 
     private void botaoAgcUsuarioActionPerformed(ActionEvent evt) {
-        GerenciarUser gerenciarUser = new GerenciarUser();
-        setContentPanel(gerenciarUser);
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        UsuarioController usuarioController = new UsuarioController(); // ou obtenha de alguma outra forma
+
+        GerenciarUserView gerenciarUserView = new GerenciarUserView(usuarioController);
+        setContentPanel(gerenciarUserView);
     }
 
     private void botaoSairActionPerformed(ActionEvent evt) {

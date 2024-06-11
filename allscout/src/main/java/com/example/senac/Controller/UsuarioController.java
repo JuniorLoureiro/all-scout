@@ -1,26 +1,22 @@
 package com.example.senac.Controller;
 
 import com.example.senac.Model.Usuario;
-import com.example.senac.Model.Endereco;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
-
-import com.example.senac.Model.Contato;
+import javax.persistence.TypedQuery;;
 
 public class UsuarioController {
     private EntityManagerFactory entityManagerFactory;
     private EntityManager entityManager;
     private Usuario usuario;
 
-
-
     public UsuarioController() {
         entityManagerFactory = Persistence.createEntityManagerFactory("jpa");
-        entityManager = entityManagerFactory.createEntityManager();
+        this.entityManager = entityManagerFactory.createEntityManager();
     }
 
     public void close() {
@@ -29,14 +25,33 @@ public class UsuarioController {
     }
 
     public void criarUsuario(String nome, String senha, String nomeUsuario) {
-        
-        usuario = new Usuario(nome, senha,nomeUsuario);
-        // FUTURA implementação para gravar em um banco de dados ou realizar outras operações necessárias.
+        Usuario usuario = new Usuario(nome, senha, nomeUsuario);
+        adicionarUsuario(usuario);
+    }
+
+    private void adicionarUsuario(Usuario usuario) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(usuario);
+        entityManager.getTransaction().commit();
+    }
+
+    public void excluirUsuario(Usuario usuario) {
+        entityManager.getTransaction().begin();
+        entityManager.remove(entityManager.contains(usuario) ? usuario : entityManager.merge(usuario));
+        entityManager.getTransaction().commit();
     }
 
     public Usuario getUsuario() {
         return usuario;
     }
+
+    public List<Usuario> buscarUsuariosPorNome(String nome) {
+        TypedQuery<Usuario> query = entityManager.createQuery(
+                "SELECT a FROM Usuario a WHERE lower(a.nome) LIKE lower(:nome)", Usuario.class);
+        query.setParameter("nome", "%" + nome + "%");
+        return query.getResultList();
+    }
+
     public Usuario login(String nomeUsuario, String senha) {
         try {
             TypedQuery<Usuario> query = entityManager.createQuery(

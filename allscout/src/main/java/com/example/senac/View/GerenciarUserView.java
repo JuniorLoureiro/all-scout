@@ -1,8 +1,11 @@
 package com.example.senac.View;
 
+import java.util.List;
 import javax.swing.*;
+import com.example.senac.Controller.UsuarioController;
+import com.example.senac.Model.Usuario;
 
-public class GerenciarUser extends JPanel{
+public class GerenciarUserView extends JPanel {
     private javax.swing.JButton addUserBotao;
     private javax.swing.JButton excluirUserBotao;
     private javax.swing.JButton pesquisarBotao;
@@ -17,12 +20,15 @@ public class GerenciarUser extends JPanel{
     private javax.swing.JLabel tituloLabel;
     private javax.swing.JLabel userLabel;
 
-    public GerenciarUser() {
+    private UsuarioController usuarioController;
+    private Usuario usuarioSelecionado;
+
+    public GerenciarUserView(UsuarioController usuarioController) {
+        this.usuarioController = usuarioController;
         initComponents();
     }
 
     private void initComponents() {
-
         javax.swing.JPanel panelView = new javax.swing.JPanel();
         tituloLabel = new javax.swing.JLabel();
         textFieldPesquisa = new javax.swing.JTextField();
@@ -60,6 +66,7 @@ public class GerenciarUser extends JPanel{
         pesquisarBotao.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         pesquisarBotao.setForeground(new java.awt.Color(255, 255, 255));
         pesquisarBotao.setText("PESQUISAR");
+        
 
         listPesquisa.setBackground(new java.awt.Color(2, 23, 43));
         listPesquisa.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 3, true));
@@ -98,11 +105,21 @@ public class GerenciarUser extends JPanel{
         excluirUserBotao.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         excluirUserBotao.setForeground(new java.awt.Color(255, 255, 255));
         excluirUserBotao.setText("EXCLUIR USER");
+        excluirUserBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirUserBotaoActionPerformed(evt);
+            }
+        });
 
         addUserBotao.setBackground(new java.awt.Color(0, 110, 255));
         addUserBotao.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         addUserBotao.setForeground(new java.awt.Color(255, 255, 255));
         addUserBotao.setText("INCLUIR USER");
+        addUserBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addUserBotaoActionPerformed(evt);
+            }
+        });
 
         senhaPasswordField.setBackground(new java.awt.Color(2, 23, 43));
         senhaPasswordField.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
@@ -127,18 +144,18 @@ public class GerenciarUser extends JPanel{
                                 .addComponent(userLabel)
                                 .addComponent(nomeLabel)
                                 .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(nomeTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelViewLayout.createSequentialGroup()
-                                        .addComponent(pesquisarBotao)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(textFieldPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)))
-                                .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(senhaPasswordField)))
+                                        .addComponent(textFieldPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pesquisarBotao))
+                                    .addComponent(jTextField1)
+                                    .addComponent(senhaPasswordField)))))
                     .addGroup(panelViewLayout.createSequentialGroup()
-                        .addGap(118, 118, 118)
+                        .addGap(99, 99, 99)
                         .addComponent(tituloLabel)))
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         panelViewLayout.setVerticalGroup(
             panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,13 +197,68 @@ public class GerenciarUser extends JPanel{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-    }                  
+    }
 
-    private void listPesquisaMouseClicked(java.awt.event.MouseEvent evt) {                                          
-        
-    }                                         
+    private void atualizarListaUsuarios(List<Usuario> usuarios) {
+        DefaultListModel<String> model = new DefaultListModel<>();
+        for (Usuario usuario : usuarios) {
+            model.addElement(usuario.getNome());
+        }
+        listPesquisa.setModel(model);
+    }
 
-    private void textFieldPesquisaKeyReleased(java.awt.event.KeyEvent evt) {                                              
-        
+    private void listPesquisaMouseClicked(java.awt.event.MouseEvent evt) {
+        if (evt.getClickCount() == 2) {
+            String nomeSelecionado = listPesquisa.getSelectedValue();
+            usuarioSelecionado = usuarioController.buscarUsuariosPorNome(nomeSelecionado).get(0); //Assuming first result for now
+
+            if (usuarioSelecionado != null) {
+                nomeTextField.setText(usuarioSelecionado.getNome());
+                jTextField1.setText(usuarioSelecionado.getNomeUsuario());
+                senhaPasswordField.setText(usuarioSelecionado.getSenha());
+            }
+        }
+    }
+
+    private void textFieldPesquisaKeyReleased(java.awt.event.KeyEvent evt) {
+        String nomePesquisado = textFieldPesquisa.getText();
+        List<Usuario> usuariosEncontrados = usuarioController.buscarUsuariosPorNome(nomePesquisado);
+        atualizarListaUsuarios(usuariosEncontrados);
+    }
+
+    private void addUserBotaoActionPerformed(java.awt.event.ActionEvent evt) {
+        String nomeCompleto = nomeTextField.getText();
+        String username = jTextField1.getText();
+        String senha = new String(senhaPasswordField.getPassword());
+
+        usuarioController.criarUsuario(nomeCompleto, senha, username);
+        JOptionPane.showMessageDialog(this, "Usuário salvo com sucesso!");
+
+        // Limpa os campos após salvar
+        nomeTextField.setText("");
+        jTextField1.setText("");
+        senhaPasswordField.setText("");
+
+        // Atualiza a lista de usuários
+        List<Usuario> usuarios = usuarioController.buscarUsuariosPorNome("");
+        atualizarListaUsuarios(usuarios);
+    }
+
+    private void excluirUserBotaoActionPerformed(java.awt.event.ActionEvent evt) {
+        if (usuarioSelecionado != null) {
+            usuarioController.excluirUsuario(usuarioSelecionado);
+            JOptionPane.showMessageDialog(this, "Usuário excluído com sucesso!");
+
+            // Limpa os campos após excluir
+            nomeTextField.setText("");
+            jTextField1.setText("");
+            senhaPasswordField.setText("");
+
+            // Atualiza a lista de usuários
+            List<Usuario> usuarios = usuarioController.buscarUsuariosPorNome("");
+            atualizarListaUsuarios(usuarios);
+        } else {
+            JOptionPane.showMessageDialog(this, "Nenhum usuário selecionado!");
+        }
     }
 }
