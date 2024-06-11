@@ -228,60 +228,47 @@ public class CadastroUserView extends javax.swing.JPanel {
         String username = textFieldUsername.getText();
         String senha = new String(textFieldSenha.getPassword());
     
-        // Verifica se todos os campos estão preenchidos
         if (nomeCompleto.isEmpty() || username.isEmpty() || senha.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos.", "Campos Vazios", JOptionPane.ERROR_MESSAGE);
-            return; // Impede a transição para o próximo painel
+            JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos.", "Campos Vazios",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
         }
         cadastrarUsuario();
         showCadastroEnderecoView();
-        
     }
     
-
-
     protected void cadastrarUsuario() {
         String nome = textFieldNomeCompleto.getText();
         String user = textFieldUsername.getText();
         String senha = textFieldSenha.getText();
-
+    
         if (nome.isEmpty() || user.isEmpty() || senha.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos obrigatórios.",
-                    "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos obrigatórios.", "Erro",
+                    JOptionPane.ERROR_MESSAGE);
             return;
         }
-
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-
-        entityManager.getTransaction().begin();
-
+    
+        // Removendo inicializações do banco de dados
         Usuario usuario = new Usuario(nome, senha, user);
         controller.criarUsuario(nome, senha, user);
-
-        entityManager.persist(usuario);
-        entityManager.getTransaction().commit();
-
-        entityManager.close();
-        entityManagerFactory.close();
-
+    
         JOptionPane.showMessageDialog(this, "Usuario cadastrado com sucesso.");
-
+    
         textFieldSenha.setText("");
         textFieldUsername.setText("");
         textFieldNomeCompleto.setText("");
     }
-
+    
     private void showCadastroEnderecoView() {
         // Obtém o frame pai do JPanel atual
         JFrame cadastroUserFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-
+    
         // Cria uma nova instância de EnderecoView
         EnderecoView enderecoView = new EnderecoView(new EnderecoController(), this);
-
+    
         // Define o conteúdo do frame como o EnderecoView
         cadastroUserFrame.setContentPane(enderecoView);
-
+    
         // Revalida e redesenha o frame
         cadastroUserFrame.revalidate();
         cadastroUserFrame.repaint();

@@ -52,7 +52,9 @@ public class Atletas {
     @Column(name = "NUMERO_CAMISA")
     private int numeroCamisa;
 
-    
+    public Atletas() {
+        
+    }
 
     public Atletas(String nome, String dataNasc, String clubeAtual, String posicao, String pernaDominante, String nacionalidade, int numeroCamisa) {
         this.nome = nome;

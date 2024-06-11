@@ -118,9 +118,7 @@ public class MainView extends JPanel {
     }
 
     private void botaoPesquisaActionPerformed(ActionEvent evt) {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        AtletasController atletasController = new AtletasController(entityManager);
+        AtletasController atletasController = new AtletasController();
         SearchView searchView = new SearchView(atletasController);
         setContentPanel(searchView);
     }

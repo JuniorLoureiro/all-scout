@@ -185,7 +185,6 @@ public class AdmMainView extends JPanel {
         setContentPanel(gerenciarUserView);
     }
 
-
     private void botaoSairActionPerformed(ActionEvent evt) {
         JFrame loginFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         LoginView loginView = new LoginView();
