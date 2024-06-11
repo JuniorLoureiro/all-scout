@@ -83,13 +83,14 @@ public class ContatoView extends JPanel {
 
         textFieldEmailContato.setBackground(new java.awt.Color(0, 0, 0));
         textFieldEmailContato.setForeground(new java.awt.Color(0, 110, 255));
+        textFieldEmailContato.setFont(new java.awt.Font("Segoe UI Black", 0, 18));
         textFieldEmailContato.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
 
         labelEmailContato.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelEmailContato.setForeground(new java.awt.Color(0, 110, 255));
         labelEmailContato.setText("EMAIL");
 
-        logoAllScout.setText("jLabel1");
+        logoAllScout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/example/senac/View/LogoCadastrar.png")));
 
         jPanelDesign1.setBackground(new java.awt.Color(0, 110, 255));
 
@@ -134,6 +135,7 @@ public class ContatoView extends JPanel {
 
         textFieldNomeDoContato.setBackground(new java.awt.Color(0, 0, 0));
         textFieldNomeDoContato.setForeground(new java.awt.Color(0, 110, 255));
+        textFieldNomeDoContato.setFont(new java.awt.Font("Segoe UI Black", 0, 18));
         textFieldNomeDoContato.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
 
         labelNomeDoContato.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -142,6 +144,7 @@ public class ContatoView extends JPanel {
 
         textFieldTelefoneContato.setBackground(new java.awt.Color(0, 0, 0));
         textFieldTelefoneContato.setForeground(new java.awt.Color(0, 110, 255));
+        textFieldTelefoneContato.setFont(new java.awt.Font("Segoe UI Black", 0, 18));
         textFieldTelefoneContato.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
 
         labelTelefoneContato.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N

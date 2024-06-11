@@ -51,6 +51,7 @@ public class SearchView extends JPanel {
         });
 
         listPesquisa.setBackground(new java.awt.Color(2, 23, 43));
+        listPesquisa.setFont(new java.awt.Font("Segoe UI Black", 0, 18));
         listPesquisa.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 3, true));
         listPesquisa.setForeground(new java.awt.Color(255, 255, 255));
         listPesquisa.addMouseListener(new java.awt.event.MouseAdapter() {

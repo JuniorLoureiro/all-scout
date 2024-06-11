@@ -4,6 +4,7 @@ import com.example.senac.Model.Atletas;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -49,12 +50,43 @@ public class AtletasController {
             return null;
         }
     }
-    
+
+    public boolean atualizarAtleta(Atletas atleta) {
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+            entityManager.merge(atleta);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     public List<Atletas> buscarAtletasPorNome(String nome) {
         TypedQuery<Atletas> query = entityManager.createQuery(
                 "SELECT a FROM Atletas a WHERE lower(a.nome) LIKE lower(:nome)", Atletas.class);
         query.setParameter("nome", "%" + nome + "%");
         return query.getResultList();
+    }
+
+    public boolean excluirAtleta(Atletas atleta) {
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+            entityManager.remove(atleta);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }
     }
 }
