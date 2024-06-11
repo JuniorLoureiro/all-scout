@@ -38,6 +38,19 @@ public class AtletasController {
         return entityManager.find(Atletas.class, id);
     }
 
+    public Atletas obterDetalhesAtleta(String nomeAtleta) {
+        TypedQuery<Atletas> query = entityManager.createQuery(
+                "SELECT a FROM Atletas a WHERE lower(a.nome) = lower(:nome)", Atletas.class);
+        query.setParameter("nome", nomeAtleta);
+        List<Atletas> resultados = query.getResultList();
+        if (!resultados.isEmpty()) {
+            return resultados.get(0);
+        } else {
+            return null;
+        }
+    }
+    
+
     public List<Atletas> buscarAtletasPorNome(String nome) {
         TypedQuery<Atletas> query = entityManager.createQuery(
                 "SELECT a FROM Atletas a WHERE lower(a.nome) LIKE lower(:nome)", Atletas.class);
