@@ -140,6 +140,7 @@ public class EnderecoView extends JPanel {
 
         textFieldPais.setBackground(new java.awt.Color(0, 0, 0));
         textFieldPais.setForeground(new java.awt.Color(0, 110, 255));
+        textFieldPais.setFont(new java.awt.Font("Segoe UI Black", 0, 18));
         textFieldPais.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
 
         botaoCadastrarEndereco.setBackground(new java.awt.Color(0, 110, 255));
@@ -155,6 +156,7 @@ public class EnderecoView extends JPanel {
 
         textFieldComplemento.setBackground(new java.awt.Color(0, 0, 0));
         textFieldComplemento.setForeground(new java.awt.Color(0, 110, 255));
+        textFieldComplemento.setFont(new java.awt.Font("Segoe UI Black", 0, 18));
         textFieldComplemento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
 
         labelComplemento.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -169,7 +171,7 @@ public class EnderecoView extends JPanel {
         labelPais.setForeground(new java.awt.Color(0, 110, 255));
         labelPais.setText("PAÍS");
 
-        logoAllScout.setText("jLabel1");
+        logoAllScout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/example/senac/View/LogoCadastrar.png")));
 
         jPanelDesign1.setBackground(new java.awt.Color(0, 110, 255));
 
@@ -218,14 +220,17 @@ public class EnderecoView extends JPanel {
 
         textFieldEstado.setBackground(new java.awt.Color(0, 0, 0));
         textFieldEstado.setForeground(new java.awt.Color(0, 110, 255));
+        textFieldEstado.setFont(new java.awt.Font("Segoe UI Black", 0, 18));
         textFieldEstado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
 
         textFieldNumero.setBackground(new java.awt.Color(0, 0, 0));
         textFieldNumero.setForeground(new java.awt.Color(0, 110, 255));
+        textFieldNumero.setFont(new java.awt.Font("Segoe UI Black", 0, 18));
         textFieldNumero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
 
         textFieldCidade.setBackground(new java.awt.Color(0, 0, 0));
         textFieldCidade.setForeground(new java.awt.Color(0, 110, 255));
+        textFieldCidade.setFont(new java.awt.Font("Segoe UI Black", 0, 18));
         textFieldCidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
 
         labelCidade.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -234,6 +239,7 @@ public class EnderecoView extends JPanel {
 
         textFieldCEP.setBackground(new java.awt.Color(0, 0, 0));
         textFieldCEP.setForeground(new java.awt.Color(0, 110, 255));
+        textFieldCEP.setFont(new java.awt.Font("Segoe UI Black", 0, 18));
         textFieldCEP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
 
         labelCEP.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -246,6 +252,7 @@ public class EnderecoView extends JPanel {
 
         textFieldLogradouro.setBackground(new java.awt.Color(0, 0, 0));
         textFieldLogradouro.setForeground(new java.awt.Color(0, 110, 255));
+        textFieldLogradouro.setFont(new java.awt.Font("Segoe UI Black", 0, 18));
         textFieldLogradouro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 110, 255)));
 
         javax.swing.GroupLayout jPanelEnderecoLayout = new javax.swing.GroupLayout(jPanelEndereco);

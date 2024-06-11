@@ -178,7 +178,12 @@ public class AdmMainView extends JPanel {
     }
 
     private void botaoAgcAtletaActionPerformed(ActionEvent evt) {
-        // Implementação do evento do botão "GERENCIAR ATLETA"
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        AtletasController atletasController = new AtletasController();
+
+        GerenciarAtletaView gerenciarAtletaView = new GerenciarAtletaView(atletasController);
+        setContentPanel(gerenciarAtletaView);
     }
 
     private void botaoAgcUsuarioActionPerformed(ActionEvent evt) {
