@@ -22,8 +22,8 @@ public class AtletasController {
         entityManagerFactory.close();
     }
 
-    public Atletas criarAtleta(String nome, String dataNasc, String clubeAtual, String pernaDominante, String posicao, String nacionalidade, int numeroCamisa) {
-        Atletas atleta = new Atletas(nome, dataNasc, clubeAtual, posicao, pernaDominante, nacionalidade, numeroCamisa);
+    public Atletas criarAtleta(String nome, String dataNasc, String clubeAtual, String pernaDominante, String posicao, String nacionalidade, int numeroCamisa, int alturaCm) {
+        Atletas atleta = new Atletas(nome, dataNasc, clubeAtual, posicao, pernaDominante, nacionalidade, numeroCamisa, alturaCm);
         adicionarAtleta(atleta);
         return atleta;
     }

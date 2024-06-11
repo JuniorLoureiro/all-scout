@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.*;
 
+import com.example.senac.Controller.AtletasController;
 import com.example.senac.Controller.UsuarioController;
 import com.example.senac.Model.Moderador;
 
@@ -168,7 +169,11 @@ public class AdmMainView extends JPanel {
     }
 
     private void botaoAddAtletaActionPerformed(ActionEvent evt) {
-        AddAtletaView addAtletaView = new AddAtletaView();
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        AtletasController atletas =  new AtletasController();
+        
+        AddAtletaView addAtletaView = new AddAtletaView(atletas);
         setContentPanel(addAtletaView);
     }
 

@@ -56,7 +56,7 @@ public class Atletas {
         
     }
 
-    public Atletas(String nome, String dataNasc, String clubeAtual, String posicao, String pernaDominante, String nacionalidade, int numeroCamisa) {
+    public Atletas(String nome, String dataNasc, String clubeAtual, String posicao, String pernaDominante, String nacionalidade, int numeroCamisa, int alturaCm) {
         this.nome = nome;
         this.dataNasc = dataNasc;
         this.clubeAtual = clubeAtual;
@@ -66,6 +66,7 @@ public class Atletas {
         this.pernaDominante = pernaDominante;
         this.nacionalidade = nacionalidade;
         this.numeroCamisa = numeroCamisa;
+        this.alturaCm = alturaCm;
     }
 
     // Getters and Setters
