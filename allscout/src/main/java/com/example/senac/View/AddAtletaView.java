@@ -1,14 +1,17 @@
 package com.example.senac.View;
 
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.List;
+
+import javax.swing.*;
+
+
+
+import com.example.senac.Model.Usuario;
+import com.example.senac.Controller.AtletasController;
+
 
 public class AddAtletaView extends JPanel{
-
-    
-
 
     private javax.swing.JButton jButtonAdicionaAtleta;
     private javax.swing.JButton jButtonLimpaAddAtleta;
@@ -29,8 +32,10 @@ public class AddAtletaView extends JPanel{
     private javax.swing.JTextField jTextFieldNumeroCamisaAddAtleta;
     private javax.swing.JTextField jTextFieldPernaDominanteAddAtleta;
     private javax.swing.JTextField jTextFieldPosicaoAddAtleta;
+    private AtletasController controller;
 
-    public AddAtletaView() {
+    public AddAtletaView(AtletasController controller) {
+        this.controller = controller;
         initComponents();
     }
     private void initComponents() {
@@ -142,6 +147,11 @@ public class AddAtletaView extends JPanel{
         jButtonAdicionaAtleta.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jButtonAdicionaAtleta.setForeground(new java.awt.Color(255, 255, 255));
         jButtonAdicionaAtleta.setText("ADICIONAR ");
+        jButtonAdicionaAtleta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCadastrarActionPerfomed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelAddAtletaLayout = new javax.swing.GroupLayout(jPanelAddAtleta);
         jPanelAddAtleta.setLayout(jPanelAddAtletaLayout);
@@ -245,7 +255,51 @@ public class AddAtletaView extends JPanel{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanelAddAtleta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-    }// </editor-fold>    
+
+        }
+        private void botaoCadastrarActionPerfomed(ActionEvent evt) {
+            // Obtendo os valores dos campos de texto
+            int altura = Integer.parseInt(jTextFieldAlturaAddAtleta.getText());
+            String clube = jTextFieldClubeAddAtleta.getText();
+            String nacionalidade = jTextFieldNacionalidadeAddAtleta.getText();
+            String nome = jTextFieldNomeAddAtleta.getText();
+            int numero = Integer.parseInt(jTextFieldNumeroCamisaAddAtleta.getText());
+            String perna = jTextFieldPernaDominanteAddAtleta.getText();
+            String posicao = jTextFieldPosicaoAddAtleta.getText();
+        
+            // Verifica se algum campo está vazio
+            if (clube.isEmpty() || nacionalidade.isEmpty() || nome.isEmpty() || perna.isEmpty() || posicao.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
+                return; // Sai do método se algum campo estiver vazio
+            }
+        
+            try {
+                // Converte os valores de altura e número para int
+                
+        
+                // Chama o método do controlador para criar o atleta
+                controller.criarAtleta(nome, nome, clube, perna, posicao, nacionalidade, numero, altura);
+                JOptionPane.showMessageDialog(this, "Atleta salvo com sucesso!");
+        
+                // Limpa os campos de texto
+                jTextFieldAlturaAddAtleta.setText("");
+                jTextFieldClubeAddAtleta.setText("");
+                jTextFieldNacionalidadeAddAtleta.setText("");
+                jTextFieldNomeAddAtleta.setText("");
+                jTextFieldNumeroCamisaAddAtleta.setText("");
+                jTextFieldPernaDominanteAddAtleta.setText("");
+                jTextFieldPosicaoAddAtleta.setText("");
+        
+            } catch (NumberFormatException e) {
+                // Mostra uma mensagem de erro se a conversão falhar
+                JOptionPane.showMessageDialog(this, "Por favor, insira um número válido para altura e número da camisa.");
+            }
+        }
+    
+    
+    
+    
+    // </editor-fold>    
     
     /* 
     private void botaoAddAgenciadorActionPerformed(java.awt.event.ActionEvent evt) {

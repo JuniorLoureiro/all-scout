@@ -52,9 +52,11 @@ public class Atletas {
     @Column(name = "NUMERO_CAMISA")
     private int numeroCamisa;
 
-    
+    public Atletas() {
+        
+    }
 
-    public Atletas(String nome, String dataNasc, String clubeAtual, String posicao, String pernaDominante, String nacionalidade, int numeroCamisa) {
+    public Atletas(String nome, String dataNasc, String clubeAtual, String posicao, String pernaDominante, String nacionalidade, int numeroCamisa, int alturaCm) {
         this.nome = nome;
         this.dataNasc = dataNasc;
         this.clubeAtual = clubeAtual;
@@ -64,44 +66,34 @@ public class Atletas {
         this.pernaDominante = pernaDominante;
         this.nacionalidade = nacionalidade;
         this.numeroCamisa = numeroCamisa;
+        this.alturaCm = alturaCm;
     }
 
     // Getters and Setters
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
-
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
-
     public String getDataNasc() {
         return dataNasc;
     }
-
     public void setDataNasc(String dataNasc) {
         this.dataNasc = dataNasc;
     }
-
     public String getClubeAtual() {
         return clubeAtual;
     }
-
     public void setClubeAtual(String clubeAtual) {
         this.clubeAtual = clubeAtual;
     }
-
-
-    
-
     public int getAlturaCm() {
         return alturaCm;
     }
@@ -174,7 +166,4 @@ public class Atletas {
     public void setPernaDominante(String pernaDominante) {
         this.pernaDominante = pernaDominante;
     }
-
-    
-    
 }

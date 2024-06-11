@@ -1,6 +1,5 @@
 package com.example.senac;
 
-
 import com.example.senac.View.LoginView;
 import com.example.senac.Model.Moderador;
 import com.example.senac.Model.Usuario;
@@ -10,12 +9,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.*;
 
-
 public class App extends JFrame {
     public static void main(String[] args) {
         
-        
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa");
+        /*EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         
         entityManager.getTransaction().begin();
@@ -32,19 +29,15 @@ public class App extends JFrame {
         entityManager.getTransaction().commit();
 
         entityManager.close();
-        entityManagerFactory.close();
+        entityManagerFactory.close();*/
        
         //SwingUtilities.invokeLater(() -> {
-            App frame = new App();
-            frame.setTitle("AllScout");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.getContentPane().add(new LoginView());
-            frame.pack();
-            frame.setLocationRelativeTo(null); // Centralizar a janela
-            frame.setVisible(true);
-        };
-    }
-
-
-    
-
+        App frame = new App();
+        frame.setTitle("AllScout");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(new LoginView());
+        frame.pack();
+        frame.setLocationRelativeTo(null); // Centralizar a janela
+        frame.setVisible(true);
+    };
+}

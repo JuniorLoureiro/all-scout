@@ -4,6 +4,8 @@ import com.example.senac.Model.Atletas;
 import com.example.senac.Controller.AtletasController;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.util.List;
 
@@ -113,11 +115,24 @@ public class SearchView extends JPanel {
     private void listPesquisaMouseClicked(java.awt.event.MouseEvent evt) {
         if (evt.getClickCount() == 2) {
             String nomeSelecionado = listPesquisa.getSelectedValue();
-            abrirDetalhesAtleta(nomeSelecionado);
+            Atletas atletaSelecionado = atletasController.obterDetalhesAtleta(nomeSelecionado);
+            if (atletaSelecionado != null) {
+                abrirDetalhesAtleta(atletaSelecionado);
+            } else {
+                JOptionPane.showMessageDialog(this, "Atleta não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 
-    private void abrirDetalhesAtleta(String nomeAtleta) {
-        // Implemente aqui a lógica para abrir os detalhes do atleta
+    private void abrirDetalhesAtleta(Atletas atleta) {
+        AtletaView atletaView = new AtletaView(atleta);
+        JFrame frame = new JFrame("Detalhes do Atleta");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.getContentPane().add(atletaView);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
+
+    
 }
