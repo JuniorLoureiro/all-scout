@@ -8,6 +8,7 @@ import javax.swing.*;
 
 
 import com.example.senac.Model.Usuario;
+import com.example.senac.salvar.AtletaException;
 import com.example.senac.Controller.AtletasController;
 
 
@@ -255,59 +256,54 @@ public class AddAtletaView extends JPanel{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanelAddAtleta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+    }
+    
+    private void botaoCadastrarActionPerfomed(ActionEvent evt) {
+        // Obtendo os valores dos campos de texto
+        String alturaStr = jTextFieldAlturaAddAtleta.getText();
+        String clube = jTextFieldClubeAddAtleta.getText();
+        String nacionalidade = jTextFieldNacionalidadeAddAtleta.getText();
+        String nome = jTextFieldNomeAddAtleta.getText();
+        String numeroStr = jTextFieldNumeroCamisaAddAtleta.getText();
+        String perna = jTextFieldPernaDominanteAddAtleta.getText();
+        String posicao = jTextFieldPosicaoAddAtleta.getText();
 
+        // Verifica se algum campo está vazio
+        if (clube.isEmpty() || nacionalidade.isEmpty() || nome.isEmpty() || perna.isEmpty() || posicao.isEmpty() || alturaStr.isEmpty() || numeroStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
+            return; // Sai do método se algum campo estiver vazio
         }
-        private void botaoCadastrarActionPerfomed(ActionEvent evt) {
-            // Obtendo os valores dos campos de texto
-            int altura = Integer.parseInt(jTextFieldAlturaAddAtleta.getText());
-            String clube = jTextFieldClubeAddAtleta.getText();
-            String nacionalidade = jTextFieldNacionalidadeAddAtleta.getText();
-            String nome = jTextFieldNomeAddAtleta.getText();
-            int numero = Integer.parseInt(jTextFieldNumeroCamisaAddAtleta.getText());
-            String perna = jTextFieldPernaDominanteAddAtleta.getText();
-            String posicao = jTextFieldPosicaoAddAtleta.getText();
-        
-            // Verifica se algum campo está vazio
-            if (clube.isEmpty() || nacionalidade.isEmpty() || nome.isEmpty() || perna.isEmpty() || posicao.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
-                return; // Sai do método se algum campo estiver vazio
-            }
-        
-            try {
-                // Converte os valores de altura e número para int
-                
-        
-                // Chama o método do controlador para criar o atleta
-                controller.criarAtleta(nome, nome, clube, perna, posicao, nacionalidade, numero, altura);
-                JOptionPane.showMessageDialog(this, "Atleta salvo com sucesso!");
-        
-                // Limpa os campos de texto
-                jTextFieldAlturaAddAtleta.setText("");
-                jTextFieldClubeAddAtleta.setText("");
-                jTextFieldNacionalidadeAddAtleta.setText("");
-                jTextFieldNomeAddAtleta.setText("");
-                jTextFieldNumeroCamisaAddAtleta.setText("");
-                jTextFieldPernaDominanteAddAtleta.setText("");
-                jTextFieldPosicaoAddAtleta.setText("");
-        
-            } catch (NumberFormatException e) {
-                // Mostra uma mensagem de erro se a conversão falhar
-                JOptionPane.showMessageDialog(this, "Por favor, insira um número válido para altura e número da camisa.");
-            }
+
+        try {
+            // Converte os valores de altura e número para int
+            int altura = Integer.parseInt(alturaStr);
+            int numero = Integer.parseInt(numeroStr);
+
+            // Chama o método do controlador para criar o atleta
+            controller.criarAtleta(nome, "1990-01-01", clube, perna, posicao, nacionalidade, numero, altura); // Supondo uma data de nascimento fictícia
+            JOptionPane.showMessageDialog(this, "Atleta salvo com sucesso!");
+
+            // Limpa os campos de texto
+            jTextFieldAlturaAddAtleta.setText("");
+            jTextFieldClubeAddAtleta.setText("");
+            jTextFieldNacionalidadeAddAtleta.setText("");
+            jTextFieldNomeAddAtleta.setText("");
+            jTextFieldNumeroCamisaAddAtleta.setText("");
+            jTextFieldPernaDominanteAddAtleta.setText("");
+            jTextFieldPosicaoAddAtleta.setText("");
+
+        } catch (NumberFormatException e) {
+            // Mostra uma mensagem de erro se a conversão falhar
+            JOptionPane.showMessageDialog(this, "Por favor, insira um número válido para altura e número da camisa.");
+        } catch (AtletaException e) {
+            // Mostra uma mensagem de erro se o atleta já estiver cadastrado
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
-    
-    
-    
-    
-    // </editor-fold>    
-    
+    }
     /* 
     private void botaoAddAgenciadorActionPerformed(java.awt.event.ActionEvent evt) {
-
-    }                                                  
+    }  
 
     private void botaoAddEstatisticaActionPerformed(java.awt.event.ActionEvent evt) {
-
- 
-       }*/
+    }*/
 }

@@ -1,7 +1,7 @@
 package com.example.senac.Controller;
 
 import com.example.senac.Model.Atletas;
-
+import com.example.senac.salvar.AtletaException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -23,7 +23,10 @@ public class AtletasController {
         entityManagerFactory.close();
     }
 
-    public Atletas criarAtleta(String nome, String dataNasc, String clubeAtual, String pernaDominante, String posicao, String nacionalidade, int numeroCamisa, int alturaCm) {
+    public Atletas criarAtleta(String nome, String dataNasc, String clubeAtual, String pernaDominante, String posicao, String nacionalidade, int numeroCamisa, int alturaCm) throws AtletaException {
+        if (obterDetalhesAtleta(nome) != null) {
+            throw new AtletaException("Atleta já cadastrado");
+        }
         Atletas atleta = new Atletas(nome, dataNasc, clubeAtual, posicao, pernaDominante, nacionalidade, numeroCamisa, alturaCm);
         adicionarAtleta(atleta);
         return atleta;

@@ -33,6 +33,9 @@ public class GerenciarAtletaView extends JPanel{
     private javax.swing.JTextField posicaoTextField;
     private javax.swing.JTextField textFieldPesquisa;
     private javax.swing.JLabel tituloLabel;
+    private javax.swing.JLabel dataNascimentoLabel;
+    private javax.swing.JTextField dataNascimentoTextField;
+
 
     private AtletasController atletasController;
 
@@ -65,6 +68,8 @@ public class GerenciarAtletaView extends JPanel{
         alturaTextField = new javax.swing.JTextField();
         atualizarBotao = new javax.swing.JButton();
         excluirBotao = new javax.swing.JButton();
+        dataNascimentoLabel = new javax.swing.JLabel();
+        dataNascimentoTextField = new javax.swing.JTextField();
 
         panelView.setBackground(new java.awt.Color(2, 31, 57));
 
@@ -127,6 +132,15 @@ public class GerenciarAtletaView extends JPanel{
         nacionalidadeLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         nacionalidadeLabel.setForeground(new java.awt.Color(255, 255, 255));
         nacionalidadeLabel.setText("NACIONALIDADE");
+
+        dataNascimentoLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        dataNascimentoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        dataNascimentoLabel.setText("DATA DE NASCIMENTO");
+
+        dataNascimentoTextField.setBackground(new java.awt.Color(2, 23, 43));
+        dataNascimentoTextField.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        dataNascimentoTextField.setForeground(new java.awt.Color(255, 255, 255));
+        dataNascimentoTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 110, 255), 3, true));
 
         nacionalidadeTextField.setBackground(new java.awt.Color(2, 23, 43));
         nacionalidadeTextField.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
@@ -193,13 +207,15 @@ public class GerenciarAtletaView extends JPanel{
                         .addGap(23, 23, 23)
                         .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(alturaLabel)
+                            .addComponent(dataNascimentoLabel)
                             .addGroup(panelViewLayout.createSequentialGroup()
                                 .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(alturaTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                                     .addComponent(nomeTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(nomeLabel, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(nacionalidadeLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nacionalidadeTextField, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(nacionalidadeTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dataNascimentoTextField, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(18, 18, 18)
                                 .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -265,6 +281,10 @@ public class GerenciarAtletaView extends JPanel{
                 .addComponent(alturaLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(alturaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(dataNascimentoLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dataNascimentoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(atualizarBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -282,7 +302,7 @@ public class GerenciarAtletaView extends JPanel{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-    }// </editor-fold>                        
+    }                     
 
     private void textFieldPesquisaKeyReleased(java.awt.event.KeyEvent evt) {
         String nomePesquisado = textFieldPesquisa.getText();
@@ -318,7 +338,9 @@ public class GerenciarAtletaView extends JPanel{
         numeroTextField.setText(String.valueOf(atleta.getNumeroCamisa()));
         pernaDominanteTextField.setText(atleta.getPernaDominante());
         alturaTextField.setText(String.valueOf(atleta.getAlturaCm()));
+        dataNascimentoTextField.setText(atleta.getDataNasc());
     }
+    
 
     private void atualizarBotaoActionPerformed(java.awt.event.ActionEvent evt) {
         String nome = nomeTextField.getText();
@@ -328,6 +350,7 @@ public class GerenciarAtletaView extends JPanel{
         String pernaDominante = pernaDominanteTextField.getText();
         int numeroCamisa = Integer.parseInt(numeroTextField.getText());
         int altura = Integer.parseInt(alturaTextField.getText());
+        String dataNascimento = dataNascimentoTextField.getText();
     
         Atletas atleta = atletasController.obterDetalhesAtleta(nome);
         if (atleta != null) {
@@ -338,6 +361,7 @@ public class GerenciarAtletaView extends JPanel{
             atleta.setPernaDominante(pernaDominante);
             atleta.setNumeroCamisa(numeroCamisa);
             atleta.setAlturaCm(altura);
+            atleta.setDataNasc(dataNascimento);
     
             if (atletasController.atualizarAtleta(atleta)) {
                 JOptionPane.showMessageDialog(this, "Atleta atualizado com sucesso!");
@@ -374,5 +398,6 @@ public class GerenciarAtletaView extends JPanel{
         numeroTextField.setText("");
         pernaDominanteTextField.setText("");
         alturaTextField.setText("");
+        dataNascimentoTextField.setText("");
     }
 }
