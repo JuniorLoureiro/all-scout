@@ -10,17 +10,14 @@ public class AppTest {
     @Test
     public void testaAGravacaoDeUmAtletaJaCadastrado() {
         AtletasController controller = new AtletasController();
-        Atletas atleta = new Atletas("LÉO JARDIM", "1995-03-20", "VASCO DA GAMA", "GOLEIRO", "DIREITA", "BRASIL", 1, 188);
+        Atletas atleta = new Atletas("PABLO VEGETTI", "1988-10-15", "VASCO DA GAMA", "ATACANTE", "DIREITA", "ARGENTINA", 99, 187);
 
-        // Adicionar o atleta pela primeira vez
         try {
             controller.criarAtleta(atleta.getNome(), atleta.getDataNasc(), atleta.getClubeAtual(), atleta.getPernaDominante(), atleta.getPosicao(), atleta.getNacionalidade(), atleta.getNumeroCamisa(), atleta.getAlturaCm());
         } catch (AtletaException e) {
-            // Não deve lançar exceção aqui
             e.printStackTrace();
         }
 
-        // Tentar adicionar o mesmo atleta novamente deve lançar AtletaException
         assertThrows(AtletaException.class, () -> {
             controller.criarAtleta(atleta.getNome(), atleta.getDataNasc(), atleta.getClubeAtual(), atleta.getPernaDominante(), atleta.getPosicao(), atleta.getNacionalidade(), atleta.getNumeroCamisa(), atleta.getAlturaCm());
         });
